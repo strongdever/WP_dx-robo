@@ -1,0 +1,84 @@
+#footer {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    z-index: 0;
+    .container {
+        width: 76% !important;
+        max-width: 128rem !important;
+    }
+    .goto-contact {
+        padding: 7.2rem 0;
+        background-image: url(../img/footer-background.webp);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        .wants-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1.6rem;
+            margin-bottom: 5.4rem;
+            .want-wrapper {
+                display: flex;
+                align-items: center;
+                color: #FFF;
+                font-family: $font_gothic;
+                font-size: 1.8rem;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+                letter-spacing: 0.36px;
+                img {
+                    width: 2.2rem;
+                    height: 1.7rem;
+                    margin-right: 0.9rem;
+                }
+            }
+        }
+        .want-label {
+            color: #FFF;
+            margin-bottom: 2.9rem;
+        }
+    }
+    .footer-bottom {
+        padding: 4.8rem 0 5.4rem 0;
+        .footer-nav-menu {
+            display: flex;
+            position: relative;
+            column-gap: 4.8rem;
+            padding-bottom: 3.2rem;
+            li {
+                a {
+                    color: $black_color;
+                    font-family: $font_gothic;
+                    font-size: 1.3rem;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: normal;
+                }
+            }
+            &::after {
+                position: absolute;
+                content: '';
+                width: 100%;
+                height: 1px;
+                bottom: 0;
+                background: #EFE6E6;
+            }
+        }
+        .logo {
+            width: 28.1rem;
+            height: 7.3rem;
+            margin-top: 3.2rem;
+            margin-bottom: 2.4rem;
+        }
+        .copyright {
+            color: $black_color;
+            font-family: $font_gothic;
+            font-size: 1.4rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+    }
+}

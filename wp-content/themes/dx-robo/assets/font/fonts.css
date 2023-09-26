@@ -1,0 +1,44 @@
+@import url('https://fonts.cdnfonts.com/css/helvetica-neue-55');
+
+/* font-family: 'Helvetica Neue', sans-serif; */
+
+@import 'cross-platform-yu-gothic';
+
+/* body {
+    font-family: cross-platform-yu-gothic, sans-serif;
+} */
+
+@font-face {
+    font-family: 'Yu Gothic';
+    src: url('YuGothB.ttc') format('truetype');
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Yu Gothic';
+    src: url('YuGothM.ttc') format('truetype');
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Yu Gothic';
+    src: url('YuGothR.ttc') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Yu Gothic';
+    src: url('YuGothL.ttc') format('truetype');
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    src: url('Helvetica Oblique.ttf') format('truetype');
+    font-style: normal;
+    font-weight: bold;
+}
