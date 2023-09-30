@@ -453,3 +453,166 @@
         }
     }
 }
+
+#archive-blog {
+    .search-wrapper {
+        border-radius: 10px;
+        background: #F4F4F4;
+        padding: 4rem;
+        .top-label {
+            margin-bottom: 2.4rem;
+        }
+        .business-extension {
+            margin-bottom: 4.8rem;
+        }
+        .header-label {
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            img {
+                margin-right: 0.6rem;
+            }
+        }
+        .region-selection {
+            margin-bottom: 2.4rem;
+            .region-list {
+                display: flex;
+                flex-direction: column;
+                row-gap: 2.4rem;
+                .region-item {
+                    .region {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 0;
+                        transition: margin 0.3s ease;
+                        label {
+                            margin: 0 1.0rem;
+                        }
+                        img {
+                            &:hover {
+                                opacity: 0.8;
+                                cursor: pointer;
+                                transition: transform 0.3s ease
+                            }
+                        }
+                    }
+                    .checkbox-list {
+                        height: 0px;
+                    }
+                }
+                .region-item.opened {
+                    .region {
+                        margin-bottom: 1.6rem;
+                        img {
+                            transform: rotate(180deg);
+                        }
+                    }
+                    .checkbox-list {
+                        height: fit-content;
+                    }
+                }
+            }
+        }
+        .checkbox-list {
+            display: flex;
+            flex-wrap: wrap;
+            column-gap: 4.0rem;
+            row-gap: 0.8rem;
+            overflow-y: hidden;
+            transition: height 0.3s;
+            .item {
+                white-space: nowrap;
+                display: flex;
+                align-items: center;
+                label {
+                    margin-left: 1.0rem;
+                }
+            }
+        }
+        .btn {
+            margin: 0 auto;
+        }
+    }
+    .display-number {
+        margin: 8.0rem 0 3.8rem 0;
+        span {
+            color: $green_color;
+        }
+    }
+    .blog-pannel {
+        margin-bottom: 10.4rem;
+        .blog-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 4rem;
+            .blog-item {
+                padding: 3.2rem;
+                border-radius: 8px;
+                background: #FFF;
+                box-shadow: 4px 4px 9px 8px rgba(199, 198, 198, 0.25);
+                .top-wrapper {
+                    display: flex;
+                    column-gap: 4.8rem;
+                    margin-bottom: 2.4rem;
+                    img {
+                        border-radius: 8px 0px 0px 8px;
+                        aspect-ratio: 1 / 1;
+                        object-fit: cover;
+                    }
+                    .personal-info {
+                        .province  {
+                            margin-bottom: 0.9rem;
+                            color: #FFF;
+                            border-radius: 4px;
+                            background: $green_color;
+                            padding: 0.3rem 0.8rem;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: fit-content;
+                            height: 2.7rem;
+                        }
+                        .title {
+                            margin-bottom: 1.4rem;
+                        }
+                        .company {
+                            margin-bottom: 0.3rem;
+                        }
+                    }
+                }
+                .middle-desc {
+                    margin-bottom: 2.4rem;
+                }
+                .bottom-table {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    row-gap: 3px;
+                    margin-bottom: 2.4rem;
+                    .row {
+                        display: grid;
+                        width: 100%;
+                        grid-template-columns: 12% 88%;
+                        column-gap: 3px;
+                        .item {
+                            background: #E2EFE5;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                        .value {
+                            background:#EFEFEF;
+                            padding: 1.6rem;
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+                    & > .row:first-child {
+                        display: grid;
+                        grid-template-columns: 12% 18% 12% calc(58% - 6px);
+                    }
+                }
+            }
+        }
+    }
+}
