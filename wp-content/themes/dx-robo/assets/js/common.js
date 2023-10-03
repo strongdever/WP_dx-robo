@@ -315,6 +315,7 @@
             }
         }
         $('.region img').on('click', regionToggle);
+        $('.region label').on('click', regionToggle);
 
         $('.region input[type=checkbox]').on('click', function() {
             console.log("checkbox");
@@ -327,8 +328,7 @@
 
         $('.checkbox-list input[type=checkbox]').on('click', function() {
             if( !$(this).is(':checked') ) {
-                console.log("checkbox");
-                $('.region input[type=checkbox]').prop('checked', false);
+                $(this).parent().parent().parent().find('.region input[type=checkbox]').prop('checked', false);
             } else {
                 var allChecked = true;
                 var allUnChecked = true;
@@ -340,7 +340,6 @@
                 })
                 if( allChecked ) {
                     $(this).parent().parent().parent().find('.region input[type=checkbox]').prop('checked', true);
-                } else {
                     $(this).parent().parent().parent().find('.region input[type=checkbox]').prop('checked', false);
                 }
             }

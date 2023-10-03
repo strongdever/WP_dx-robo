@@ -64,7 +64,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             <li class="region-item">
                                 <div class="region">
                                     <input type="checkbox" id="hokkaido-tohoku" name="hokkaido-tohoku" value="北海道・東北">
-                                    <label for="hokkaido-tohoku" class="desc-15-bold">北海道・東北</label>
+                                    <label class="desc-15-bold">北海道・東北</label>
                                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/down-mark.svg">
                                 </div>
                                 <ul class="province-list checkbox-list">
@@ -85,7 +85,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             <li class="region-item">
                                 <div class="region">
                                     <input type="checkbox" id="kanto" name="kanto" value="関東">
-                                    <label for="kanto" class="desc-15-bold">関東</label>
+                                    <label class="desc-15-bold">関東</label>
                                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/down-mark.svg">
                                 </div>
                                 <ul class="province-list checkbox-list">

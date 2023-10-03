@@ -228,4 +228,38 @@ function catch_that_image() {
     return $first_img;
 }
 
+//pagination
+function custom_pagination($total_pages, $current_page = 1, $total_counts = 0) {
+    global $wp_query;
+
+    $big = 99999999; // set a big number for the links
+
+    $paginate_links = paginate_links(array(
+        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+        'format' => '?paged=%#%',
+        'current' => max(1, $current_page),
+        'total' => $total_pages,
+        'type' => 'array',
+        'prev_text' => __('<i class="fa fa-angle-left bounce"></i>'),
+        'next_text' => __('<i class="fa fa-angle-right bounce"></i>'),
+        'show_all' => true,
+        'end_size' => 3,
+        'mid_size' => 3
+    ));
+
+    
+?>
+    
+    <?php if ($paginate_links) : ?>
+    <div class="pager">
+        <ul class="pager__wrap">
+            <?php foreach ($paginate_links as $link) : ?>
+                <li class="pager__bt"><?php echo $link; ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php endif; ?>
+<?php
+}
+
 ?>

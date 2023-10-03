@@ -5,97 +5,90 @@ $path_parts = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
 $path_parts = pathinfo($path_parts);
 
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-$cat_slug = get_query_var('news-category') ? get_query_var('news-category') : "";
+// $cat_slug = get_query_var('news-category') ? get_query_var('news-category') : "";
 
 ?>
 
-    <main id="news">
-        <div class="page-status">
-            <a class="home" href="<?php echo HOME; ?>">トップページ</a>
-            <img src="<?php echo T_DIRE_URI; ?>/assets/img/goto-mark.png">
-            <div class="this-page">CxO人材バンクNEWS</div>
-        </div>
-        <div class="common-firstview">
-            <h3 class="section-title">CxO人材バンクNEWS</h3>
-            <h5 class="eng-title">NEWS</h5>
-        </div>
-
-        <div class="container">
-            <?php  
-                $cats_args = [
-                    'taxonomy' => 'news-category',
-                    'hide_empty' => false,
-                ];
-                $cats = get_terms( $cats_args );
-            ?>
-            <?php if( $cats ) : ?>
-            <div class="categories">
-                <a class="category<?php echo $cat_slug ? '' : ' active'; ?>" href="<?php echo HOME; ?>/news">全て</a>
-                <?php foreach( $cats as $cat ) : ?>
-                <a class="category<?php if($cat_slug == $cat->slug ){ echo ' active'; } else { echo ''; } ?>" href="<?php echo get_term_link($cat); ?>"><?php echo $cat->name; ?></a>
-                <?php endforeach; ?>
+    <main id="archive-news">
+        <div class="bread-crump">
+                <div class="container">
+                    <a href="<?php echo HOME; ?>" class="link">トップページ</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <h5 class="current-page">RPAニュース</h5>
+                </div>
             </div>
-            <?php endif; ?>
-            <?php
-                $args = [
-                    'post_type' => 'news',
-                    'post_status' => 'publish',
-                    'paged' => $paged,
-                    'posts_per_page' => 12,
-                    'orderby' => 'post_date',
-                    'order' => 'DESC'
-                ];
-                $tax_query = [];
+            <div class="page-title">
+                <div class="container">
+                    <h5 class="en">NEWS</h5>
+                    <h2 class="jp">RPAニュース</h2>
+                </div>
+            </div>
 
-                if( $cat_slug ) {
-                    $tax_query[] = [
-                        'taxonomy' => 'news-category',
-                        'field' => 'slug',
-                        'terms' => $cat_slug
+        <section class="news">
+			<div class="container">
+				<div class="news-pannel">
+                <?php
+                    $args = [
+                        'post_type' => 'news',
+                        'post_status' => 'publish',
+                        'paged' => $paged,
+                        'posts_per_page' => 1,
+                        'orderby' => 'post_date',
+                        'order' => 'DESC'
                     ];
-                }
-            
-                if ( !empty($tax_query) ) {
-                    $args['tax_query'] = $tax_query;
-                }
-
-                $custom_query = new WP_Query( $args );
-            ?>
-            <ul class="news-wrapper">
+                    $custom_query = new WP_Query( $args );
+                ?>
                 <?php if( $custom_query->have_posts() ) : ?>
-                <?php while( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
-                <li class="news-item">
-                    <ul class="item">
-                        <li>
-                            <span class="date"><?php the_time('Y.m.d'); ?></span>
-                        </li>
-                        <?php
-                        $post_cats = get_the_terms(get_the_ID(), 'news-category');
-                        if( $post_cats ) :
-                            foreach($post_cats as $post_cat) :
-                        ?>
-                        <li>
-                            <a class="category" href="<?php echo get_term_link($post_cat); ?>"><?php echo $post_cat->name; ?></a>
-                        </li>
-                        <?php 
-                            endforeach;
-                        endif; ?>
-                        <li>
-                            <a class="title" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        </li>
-                    </ul>
-                </li>
-                <?php endwhile; ?>
-                <?php else : ?>
-                <p class="no-item desc">該当の投稿が存在しません。</p>
+                    <?php while( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
+                    <a href="<?php the_permalink(); ?>">
+                        <div class="latest-news">
+                        <?php if( has_post_thumbnail() ): ?>
+                            <img class="thumbnail" src="<?php echo get_the_post_thumbnail_url(); ?>">
+                        <?php else: ?>
+                            <img class="thumbnail" src="<?php echo catch_that_image(); ?>">
+                        <?php endif; ?>
+                            <div class="news-wrapper">
+                                <div class="date"><?php the_time('Y.m.f'); ?></div>
+                                <h3 class="title"><?php the_title(); ?></h3>
+                                <p class="content desc-15-normal"><?php the_excerpt(); ?></p>
+                            </div>
+                        </div>
+                    </a>
+                    <?php
+                    $first_ID = get_the_ID();
+                    endwhile;
+                    ?>
                 <?php endif; ?>
-                <?php the_posts_pagination( array(
-                    'next_text' => '<i class="fa fa-angle-right" style="font-size:36px"></i>',
-                    'prev_text' => '<i class="fa fa-angle-left" style="font-size:36px"></i>',
-        	    ) ); ?>
-        	    <?php wp_reset_query(); ?>
-            </ul>
-        </div>
+                <?php
+                $args = [
+                        'post_type' => 'news',
+                        'post_status' => 'publish',
+                        'paged' => $paged,
+                        'posts_per_page' => 9,
+                        'post__not_in'  => array($first_ID),
+                        'orderby' => 'post_date',
+                        'order' => 'DESC'
+                    ];
+                    $custom_query = new WP_Query( $args );
+                ?>
+                <?php if( $custom_query->have_posts() ) : ?>
+					<ul class="news-list">
+                        <?php while( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
+						<li class="news-wrapper">
+							<div class="date"><?php the_time('Y.m.d'); ?></div>
+							<h3 class="title">
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+							</h3>
+						</li>
+                        <?php endwhile; ?>
+					</ul>
+                <?php endif; ?>
+                    <div class="pagination">
+                        <?php custom_pagination($custom_query->max_num_pages, $paged, $custom_query->found_posts); ?>
+                    </div>
+				</div>
+			</div>
+		</section>
 
     </main>
 

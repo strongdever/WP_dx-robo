@@ -121,36 +121,62 @@
 			<div class="container">
 				<div class="top-label"><img src="<?php echo T_DIRE_URI; ?>/assets/img/news-icon.svg">RPA（自動化）ニュース</div>
 				<div class="news-pannel">
-					<div class="latest-news">
-						<img src="<?php echo T_DIRE_URI; ?>/assets/img/news1.png" class="thumbnail">
-						<div class="news-wrapper">
-							<div class="date">2023.05.20</div>
-							<h3 class="title">
-								<a href="">八尾トーヨー住器、RPAロボット80個を社内開発し、累計1300時間を創出</a>
-							</h3>
-							<p class="content desc-15-normal">建築資材の販売や建築工事業を営む八尾トーヨー住器（本社：大阪府八尾市）は、RPA（ロボットによる業務自動化）を導入し、累計で1300時間以上を創出した。RPAソフトウェア「BizRobo!」を提供したRPAテクノロジーズが2023年4月20日に発表した。</p>
-						</div>
-					</div>
+                <?php
+                    $args = [
+                        'post_type' => 'news',
+                        'post_status' => 'publish',
+                        'paged' => $paged,
+                        'posts_per_page' => 1,
+                        'orderby' => 'post_date',
+                        'order' => 'DESC'
+                    ];
+                    $custom_query = new WP_Query( $args );
+                ?>
+                <?php if( $custom_query->have_posts() ) : ?>
+                    <?php while( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
+                    <a href="<?php the_permalink(); ?>">
+                        <div class="latest-news">
+                        <?php if( has_post_thumbnail() ): ?>
+                            <img class="thumbnail" src="<?php echo get_the_post_thumbnail_url(); ?>">
+                        <?php else: ?>
+                            <img class="thumbnail" src="<?php echo catch_that_image(); ?>">
+                        <?php endif; ?>
+                            <div class="news-wrapper">
+                                <div class="date"><?php the_time('Y.m.f'); ?></div>
+                                <h3 class="title"><?php the_title(); ?></h3>
+                                <p class="content desc-15-normal"><?php the_excerpt(); ?></p>
+                            </div>
+                        </div>
+                    </a>
+                    <?php
+                    $first_ID = get_the_ID();
+                    endwhile;
+                    ?>
+                <?php endif; ?>
+                <?php
+                $args = [
+                        'post_type' => 'news',
+                        'post_status' => 'publish',
+                        'paged' => $paged,
+                        'posts_per_page' => 3,
+                        'post__not_in'  => array($first_ID),
+                        'orderby' => 'post_date',
+                        'order' => 'DESC'
+                    ];
+                    $custom_query = new WP_Query( $args );
+                ?>
+                <?php if( $custom_query->have_posts() ) : ?>
 					<ul class="news-list">
+                        <?php while( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
 						<li class="news-wrapper">
-							<div class="date">2023.05.20</div>
+							<div class="date"><?php the_time('Y.m.d'); ?></div>
 							<h3 class="title">
-								<a href="">八尾トーヨー住器、RPAロボット80個を社内開発し、累計1300時間を創出</a>
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 							</h3>
 						</li>
-						<li class="news-wrapper">
-							<div class="date">2023.05.20</div>
-							<h3 class="title">
-								<a href="">八尾トーヨー住器、RPAロボット80個を社内開発し、累計1300時間を創出</a>
-							</h3>
-						</li>
-						<li class="news-wrapper">
-							<div class="date">2023.05.20</div>
-							<h3 class="title">
-								<a href="">八尾トーヨー住器、RPAロボット80個を社内開発し、累計1300時間を創出</a>
-							</h3>
-						</li>
+                        <?php endwhile; ?>
 					</ul>
+                <?php endif; ?>
 					<a class="goto-page desc-15-bold" href="<?php echo HOME . "news"; ?>"><i class="fa-solid fa-arrow-right"></i>ニュース一覧</a>
 				</div>
 			</div>

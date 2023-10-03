@@ -487,12 +487,13 @@
                         transition: margin 0.3s ease;
                         label {
                             margin: 0 1.0rem;
+                            cursor: pointer;
                         }
                         img {
                             &:hover {
                                 opacity: 0.8;
                                 cursor: pointer;
-                                transition: transform 0.3s ease
+                                transition: all 0.3s ease
                             }
                         }
                     }
@@ -510,6 +511,9 @@
                     .checkbox-list {
                         height: fit-content;
                     }
+                }
+                label {
+                    cursor: pointer;
                 }
             }
         }
@@ -611,6 +615,123 @@
                         display: grid;
                         grid-template-columns: 12% 18% 12% calc(58% - 6px);
                     }
+                }
+            }
+        }
+    }
+}
+
+#archive-news {
+    .news {
+        margin-bottom: 8.8rem;
+        .container {
+            width: 86% !important;
+            max-width: 140rem;
+            .news-pannel {
+                border-radius: 8px;
+                background: #FFF;
+                box-shadow: 4px 4px 9px 8px rgba(199, 198, 198, 0.25);
+                a:hover {
+                    opacity: 0.7;
+                }
+                .latest-news {
+                    border-bottom: 1px solid #EFE6E6;
+                }
+                .news-list {
+                    border-bottom: 1px solid #EFE6E6;
+                }
+            }
+        }
+    }
+}
+
+#single-news {
+    .news {
+        margin-bottom: 8.8rem;
+        .container {
+            width: 86% !important;
+            max-width: 140rem;
+            .news-pannel {
+                border-radius: 8px;
+                background: #FFF;
+                box-shadow: 4px 4px 9px 8px rgba(199, 198, 198, 0.25);
+                .title {
+                    color: $black_color;
+                    font-family: $font_gothic;
+                    font-size: 2.4rem;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 24px; /* 100% */
+                    letter-spacing: 0.96px;
+                    margin-bottom: 3.2rem;
+                }
+                .date {
+                    color: $black_color;
+                    font-family: $font_gothic;
+                    font-size: 1.6rem;
+                    font-style: normal;
+                    font-weight: 500;
+                    line-height: 16px; /* 100% */
+                    margin-bottom: 3.2rem;
+                }
+                .content-wrapper {
+                    display: block;
+                    position: relative;
+                    padding: 4.8rem 0 4.0rem 0;
+                    border-top: 1px solid #EFE6E6;
+                    border-bottom: 1px solid #EFE6E6;
+                    margin-bottom: 3.2rem;
+                    .thumbnail {
+                        display: block;
+                        width: 50%;
+                        height: fit-content;
+                        margin-left: auto;
+                        margin-right: auto;
+                        aspect-ratio: 600 / 415;
+                        object-fit: cover;
+                        margin-bottom: 6.0rem;
+                    }
+                    h2 {
+                        display: block;
+                        position: relative;
+                        margin-left: 1.6rem;
+                        color: #000;
+                        font-family: $font_gothic;
+                        font-size: 2.0rem;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 20px; /* 100% */
+                    }
+                    h2::before {
+                        display: block;
+                        position: absolute;
+                        content: '';
+                        width: 4px;
+                        height: 100%;
+                        top: 0;
+                        left: -1.6rem;
+                        background: $green_color;
+                    }
+                
+                    h3 {
+                        color: #000;
+                        font-family: $font_gothic;
+                        font-size: 1.8rem;
+                        font-style: normal;
+                        font-weight: 700;
+                        line-height: 18px; /* 100% */
+                    }
+                    p {
+                        color: $black_color;
+                        font-family: $font_gothic;
+                        font-size: 1.5rem;
+                        font-style: normal;
+                        font-weight: 500;
+                        line-height: normal;
+                    }
+                }
+                .goto-page {
+                    margin-left: 0;
                 }
             }
         }

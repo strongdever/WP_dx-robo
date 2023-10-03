@@ -1,36 +1,50 @@
 <?php get_header(); ?>
+<?php
 
-<main id="single-news">
-        <div class="page-status">
-            <a class="home" href="<?php echo HOME; ?>">トップページ</a>
-            <img src="<?php echo T_DIRE_URI; ?>/assets/img/goto-mark.png">
-            <div class="this-page">CxO人材バンクNEWS</div>
-        </div>
-        <?php if( have_posts() ) : ?>
-        <?php while( have_posts() ) : the_post(); ?>
-        <div class="main-section">
-            <div class="header-text">
-                <div class="date"><?php the_time("Y.m.d"); ?></div>
-                <?php
-                $post_cats = get_the_terms(get_the_ID(), "news-category");
-                if( $post_cats ) :
-                    foreach( $post_cats as $post_cat ) : 
-                ?>
-                <a class="category" href="<?php echo get_term_link($post_cat); ?>"><?php echo $post_cat->name; ?></a>
-                <?php 
-                endforeach; 
-                endif;
-                ?>
+$path_parts = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
+$path_parts = pathinfo($path_parts);
+
+$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+// $cat_slug = get_query_var('news-category') ? get_query_var('news-category') : "";
+
+?>
+
+    <main id="single-news">
+        <div class="bread-crump">
+                <div class="container">
+                    <a href="<?php echo HOME; ?>" class="link">トップページ</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <h5 class="current-page">RPAニュース</h5>
+                </div>
             </div>
-            <div class="title">
-                <?php the_title(); ?>
+            <div class="page-title">
+                <div class="container">
+                    <h5 class="en">NEWS</h5>
+                    <h2 class="jp">RPAニュース</h2>
+                </div>
             </div>
-            <?php the_content(); ?>
-            
-            <a class="btn-rightarrow" href="<?php echo HOME . 'news'; ?>">ニュース一覧へ</a>
-        </div>
-        <?php endwhile; ?>
-        <?php endif; ?>
+
+        <section class="news">
+			<div class="container">
+				<div class="news-pannel">
+                    <h2 class="title"><?php the_title(); ?></h2>
+                    <p class="date"><?php the_time('Y.m.d'); ?>
+                    <div class="content-wrapper">
+                    <?php if( has_post_thumbnail() ): ?>
+                        <img class="thumbnail" src="<?php echo get_the_post_thumbnail_url(); ?>">
+                    <?php else: ?>
+                        <img class="thumbnail" src="<?php echo catch_that_image(); ?>">
+                    <?php endif; ?>
+                        <?php the_content(); ?>
+                        <?php if (shortcode_exists('addtoany')) : ?>
+                            <?php echo do_shortcode('[addtoany]'); ?>
+                        <?php endif; ?>
+                    </div>
+                    <a class="goto-page desc-15-bold" href="<?php echo HOME . "news"; ?>"><i class="fa-solid fa-arrow-left"></i>RPAニュース一覧に戻る</a>
+                </div>
+			</div>
+		</section>
+
     </main>
 
-    <?php get_footer(); ?>
+	<?php get_footer(); ?>

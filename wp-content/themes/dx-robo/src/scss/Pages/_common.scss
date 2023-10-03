@@ -100,6 +100,9 @@
         border-bottom: 1px solid #D1D1D1;
         .thumbnail {
             width: 20%;
+            height: fit-content;
+            aspect-ratio: 208 / 144;
+            object-fit: cover;
         }
         .news-wrapper {
             .date {
@@ -112,7 +115,10 @@
     }
     .news-list {
         padding: 3.2rem 0 2.5rem 0;
+        border-bottom: 1px solid #D1D1D1;
+        margin-bottom: 3.2rem;
         .news-wrapper {
+            width: 100%;
             .date {
                 margin-bottom: 0.3rem;
             }
@@ -139,6 +145,13 @@
         line-height: normal;
         &:hover {
             opacity: 0.7;
+        }
+        a {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 100%;
         }
     }
 }
@@ -202,6 +215,7 @@
             }
             .image-wrapper {
                 width: 100%;
+                height: fit-content;
                 aspect-ratio: 3 / 1;
                 margin-bottom: 3.2rem;
                 display: flex;
@@ -374,4 +388,78 @@ input[type=checkbox] {
     margin: -1px -1px 0 -1px;
     transform: rotate(45deg) translate(-50%, -50%);
     z-index: 2;
+  }
+
+  .pager__wrap {
+    display: flex;
+    column-gap: 1.6rem;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    .pager__bt {
+        .page-numbers {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 3.2rem;
+            height: 4.0rem;
+            padding: 12px 8px;
+            border-radius: 4px;
+            border: 1px solid #D1D1D1;
+            color: $green_color;
+            font-family: $font_gothic;
+            font-size: 1.5rem;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 15px; /* 100% */
+        }
+        .current.page-numbers {
+            background: $green_color;
+            color: #FFF;
+            border-color: $green_color;
+        }
+    }
+  }
+
+  .font-20-700 {
+    color: #000;
+    font-family: $font_gothic;
+    font-size: 2.0rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 100% */
+  }
+
+  .font-18-700 {
+    color: #000;
+    font-family: $font_gothic;
+    font-size: 1.8rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px; /* 100% */
+  }
+  .title-with-stick {
+    display: block;
+    position: relative;
+    margin-left: 1.6rem;
+  }
+  .title-with-stick::before {
+    display: block;
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 100%;
+    top: 0;
+    left: -1.6rem;
+    background: $green_color;
+  }
+
+  .font-15-500 {
+    color: $black_color;
+    font-family: $font_gothic;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
   }
