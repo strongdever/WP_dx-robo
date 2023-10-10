@@ -332,6 +332,10 @@
             }
         }
         img {
+            width: 46%;
+            aspect-ratio: 565 / 300;
+            object-fit: cover;
+            height: fit-content;
             border-radius: 40px 0px 0px 40px;
         }
     }
@@ -545,77 +549,122 @@
     }
     .blog-pannel {
         margin-bottom: 10.4rem;
-        .blog-list {
+    }
+}
+
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4rem;
+    .blog-item {
+        padding: 3.2rem;
+        border-radius: 8px;
+        background: #FFF;
+        box-shadow: 4px 4px 9px 8px rgba(199, 198, 198, 0.25);
+        .top-wrapper {
+            display: flex;
+            column-gap: 4.8rem;
+            margin-bottom: 2.4rem;
+            img {
+                width: 20%;
+                height: fit-content;
+                border-radius: 8px 0px 0px 8px;
+                aspect-ratio: 1 / 1;
+                object-fit: cover;
+            }
+            .personal-info {
+                .province  {
+                    margin-bottom: 0.9rem;
+                    color: #FFF;
+                    border-radius: 4px;
+                    background: $green_color;
+                    padding: 0.3rem 0.8rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: fit-content;
+                    height: 2.7rem;
+                }
+                .title {
+                    margin-bottom: 1.4rem;
+                }
+                .company {
+                    margin-bottom: 0.3rem;
+                }
+            }
+        }
+        .middle-desc {
+            margin-bottom: 2.4rem;
+        }
+        .bottom-table {
             display: flex;
             flex-direction: column;
-            row-gap: 4rem;
-            .blog-item {
-                padding: 3.2rem;
-                border-radius: 8px;
-                background: #FFF;
-                box-shadow: 4px 4px 9px 8px rgba(199, 198, 198, 0.25);
-                .top-wrapper {
+            align-items: center;
+            row-gap: 3px;
+            margin-bottom: 2.4rem;
+            .row {
+                display: grid;
+                width: 100%;
+                grid-template-columns: 12% 88%;
+                column-gap: 3px;
+                .item {
+                    background: #E2EFE5;
                     display: flex;
-                    column-gap: 4.8rem;
-                    margin-bottom: 2.4rem;
-                    img {
-                        border-radius: 8px 0px 0px 8px;
-                        aspect-ratio: 1 / 1;
-                        object-fit: cover;
-                    }
-                    .personal-info {
-                        .province  {
-                            margin-bottom: 0.9rem;
-                            color: #FFF;
-                            border-radius: 4px;
-                            background: $green_color;
-                            padding: 0.3rem 0.8rem;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
-                            width: fit-content;
-                            height: 2.7rem;
-                        }
-                        .title {
-                            margin-bottom: 1.4rem;
-                        }
-                        .company {
-                            margin-bottom: 0.3rem;
-                        }
-                    }
-                }
-                .middle-desc {
-                    margin-bottom: 2.4rem;
-                }
-                .bottom-table {
-                    display: flex;
-                    flex-direction: column;
                     align-items: center;
-                    row-gap: 3px;
-                    margin-bottom: 2.4rem;
-                    .row {
-                        display: grid;
-                        width: 100%;
-                        grid-template-columns: 12% 88%;
-                        column-gap: 3px;
-                        .item {
-                            background: #E2EFE5;
-                            display: flex;
-                            align-items: center;
-                            justify-content: center;
+                    justify-content: center;
+                }
+                .value {
+                    background:#EFEFEF;
+                    padding: 1.6rem;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+            & > .row:first-child {
+                display: grid;
+                grid-template-columns: 12% 18% 12% calc(58% - 6px);
+            }
+        }
+    }
+}
+
+#single-blog {
+    .bread-crump {
+        margin-bottom: 0;
+    }
+    .blog-pannel {
+        padding: 4.0rem 0 11.2rem 0;
+    }
+    .blog-list {
+        .blog-item {
+            margin-bottom: 4.8rem;
+            .top-wrapper {
+                .personal-info {
+                    .company-name {
+                        display: flex;
+                        column-gap: 1.2rem;
+                        align-items: center;
+                        margin-bottom: 3.2rem;
+                        .company {
+                            font-size: 15px;
+                            margin-bottom: 0;
                         }
-                        .value {
-                            background:#EFEFEF;
-                            padding: 1.6rem;
-                            display: flex;
-                            align-items: center;
-                        }
-                    }
-                    & > .row:first-child {
-                        display: grid;
-                        grid-template-columns: 12% 18% 12% calc(58% - 6px);
                     }
                 }
+            }
+            .bottom-table {
+                margin-bottom: 3.2rem;
+            }
+            .career-wrapper {
+                margin-bottom: 3.2rem;
+            }
+            .qualification-wrapper {
+                .qualification-list {
+                    list-style: inside;
+                }
+            }
+            .title-lable {
+                margin-bottom: 1.0rem;
             }
         }
     }
@@ -677,7 +726,7 @@
                 .content-wrapper {
                     display: block;
                     position: relative;
-                    padding: 4.8rem 0 4.0rem 0;
+                    padding: 4.8rem 0 0 0;
                     border-top: 1px solid #EFE6E6;
                     border-bottom: 1px solid #EFE6E6;
                     margin-bottom: 3.2rem;
@@ -734,6 +783,30 @@
                     margin-left: 0;
                 }
             }
+        }
+    }
+}
+
+#case-page {
+    .concept {
+        margin-bottom: 10.4rem;
+        .container {
+            display: flex;
+            width: 80% !important;
+            max-width: 132rem;
+            column-gap: 8.8rem;
+        }
+        .left-wrapper {
+            .page-title {
+                margin-bottom: 2.8rem;
+            }
+        }
+        img {
+            width: 46%;
+            aspect-ratio: 565 / 300;
+            object-fit: cover;
+            height: fit-content;
+            border-radius: 40px 0px 0px 40px;
         }
     }
 }

@@ -323,7 +323,7 @@ figure img,
   background: #009770;
   color: #FFF;
   font-family: "Yu Gothic";
-  font-size: 15px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -420,6 +420,8 @@ figure img,
 .white.btn {
   color: #009770;
   background: #FFF;
+  border-radius: 90px;
+  border: 2px solid #009770;
 }
 
 .white.btn::before {
@@ -4005,6 +4007,13 @@ body.mobile-nav-active #mobile-nav {
 }
 
 #about-page .concept img {
+  width: 46%;
+  aspect-ratio: 565 / 300;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   border-radius: 40px 0px 0px 40px;
 }
 
@@ -4314,7 +4323,7 @@ body.mobile-nav-active #mobile-nav {
   margin-bottom: 10.4rem;
 }
 
-#archive-blog .blog-pannel .blog-list {
+.blog-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4325,7 +4334,7 @@ body.mobile-nav-active #mobile-nav {
   row-gap: 4rem;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item {
+.blog-list .blog-item {
   padding: 3.2rem;
   border-radius: 8px;
   background: #FFF;
@@ -4333,7 +4342,7 @@ body.mobile-nav-active #mobile-nav {
           box-shadow: 4px 4px 9px 8px rgba(199, 198, 198, 0.25);
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .top-wrapper {
+.blog-list .blog-item .top-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4343,14 +4352,18 @@ body.mobile-nav-active #mobile-nav {
   margin-bottom: 2.4rem;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .top-wrapper img {
+.blog-list .blog-item .top-wrapper img {
+  width: 20%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   border-radius: 8px 0px 0px 8px;
   aspect-ratio: 1 / 1;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .top-wrapper .personal-info .province {
+.blog-list .blog-item .top-wrapper .personal-info .province {
   margin-bottom: 0.9rem;
   color: #FFF;
   border-radius: 4px;
@@ -4371,19 +4384,19 @@ body.mobile-nav-active #mobile-nav {
   height: 2.7rem;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .top-wrapper .personal-info .title {
+.blog-list .blog-item .top-wrapper .personal-info .title {
   margin-bottom: 1.4rem;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .top-wrapper .personal-info .company {
+.blog-list .blog-item .top-wrapper .personal-info .company {
   margin-bottom: 0.3rem;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .middle-desc {
+.blog-list .blog-item .middle-desc {
   margin-bottom: 2.4rem;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .bottom-table {
+.blog-list .blog-item .bottom-table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4398,7 +4411,7 @@ body.mobile-nav-active #mobile-nav {
   margin-bottom: 2.4rem;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .bottom-table .row {
+.blog-list .blog-item .bottom-table .row {
   display: -ms-grid;
   display: grid;
   width: 100%;
@@ -4409,7 +4422,7 @@ body.mobile-nav-active #mobile-nav {
           column-gap: 3px;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .bottom-table .row .item {
+.blog-list .blog-item .bottom-table .row .item {
   background: #E2EFE5;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4422,7 +4435,7 @@ body.mobile-nav-active #mobile-nav {
           justify-content: center;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .bottom-table .row .value {
+.blog-list .blog-item .bottom-table .row .value {
   background: #EFEFEF;
   padding: 1.6rem;
   display: -webkit-box;
@@ -4433,11 +4446,57 @@ body.mobile-nav-active #mobile-nav {
           align-items: center;
 }
 
-#archive-blog .blog-pannel .blog-list .blog-item .bottom-table > .row:first-child {
+.blog-list .blog-item .bottom-table > .row:first-child {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 12% 18% 12% calc(58% - 6px);
   grid-template-columns: 12% 18% 12% calc(58% - 6px);
+}
+
+#single-blog .bread-crump {
+  margin-bottom: 0;
+}
+
+#single-blog .blog-pannel {
+  padding: 4.0rem 0 11.2rem 0;
+}
+
+#single-blog .blog-list .blog-item {
+  margin-bottom: 4.8rem;
+}
+
+#single-blog .blog-list .blog-item .top-wrapper .personal-info .company-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 1.2rem;
+     -moz-column-gap: 1.2rem;
+          column-gap: 1.2rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 3.2rem;
+}
+
+#single-blog .blog-list .blog-item .top-wrapper .personal-info .company-name .company {
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+#single-blog .blog-list .blog-item .bottom-table {
+  margin-bottom: 3.2rem;
+}
+
+#single-blog .blog-list .blog-item .career-wrapper {
+  margin-bottom: 3.2rem;
+}
+
+#single-blog .blog-list .blog-item .qualification-wrapper .qualification-list {
+  list-style: inside;
+}
+
+#single-blog .blog-list .blog-item .title-lable {
+  margin-bottom: 1.0rem;
 }
 
 #archive-news .news {
@@ -4510,7 +4569,7 @@ body.mobile-nav-active #mobile-nav {
 #single-news .news .container .news-pannel .content-wrapper {
   display: block;
   position: relative;
-  padding: 4.8rem 0 4.0rem 0;
+  padding: 4.8rem 0 0 0;
   border-top: 1px solid #EFE6E6;
   border-bottom: 1px solid #EFE6E6;
   margin-bottom: 3.2rem;
@@ -4575,6 +4634,36 @@ body.mobile-nav-active #mobile-nav {
 
 #single-news .news .container .news-pannel .goto-page {
   margin-left: 0;
+}
+
+#case-page .concept {
+  margin-bottom: 10.4rem;
+}
+
+#case-page .concept .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80% !important;
+  max-width: 132rem;
+  -webkit-column-gap: 8.8rem;
+     -moz-column-gap: 8.8rem;
+          column-gap: 8.8rem;
+}
+
+#case-page .concept .left-wrapper .page-title {
+  margin-bottom: 2.8rem;
+}
+
+#case-page .concept img {
+  width: 46%;
+  aspect-ratio: 565 / 300;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-radius: 40px 0px 0px 40px;
 }
 
 .container {

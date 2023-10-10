@@ -42,7 +42,7 @@
     background: $green_color;
     color: #FFF;
     font-family: $font_gothic;
-    font-size: 15px;
+    font-size: 1.5rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -122,6 +122,8 @@
 .white.btn {
     color: $green_color;
     background: #FFF;
+    border-radius: 90px;
+    border: 2px solid $green_color;
     &::before {
         background: linear-gradient(to right, rgba(213, 231, 226, 0.44) 0%, rgba(255, 255, 255, 0.3) 100%);
         z-index: -2 !important;

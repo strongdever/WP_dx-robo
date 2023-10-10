@@ -121,7 +121,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             <div class="personal-info">
                                 <h5 class="province desc-13-normal">茨城県</h5>
                                 <h4 class="title desc-20-bold">小さなことから大きなことまでお手伝いします</h4>
-                                <p class="compnay desc-13-normal">株式会社鈴木工業</p>
+                                <p class="company desc-13-normal">株式会社鈴木工業</p>
                                 <p class="name desc-20-bold">鈴木 太郎</p>
                             </div>
                         </div>
@@ -145,39 +145,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                 <div class="value desc-15-normal">相談料 1回2時間 20,000円</div>
                             </div>
                         </div>
-                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "news"; ?>"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
-                    </li>
-                    <li class="blog-item">
-                        <div class="top-wrapper">
-                            <img src="<?php echo T_DIRE_URI; ?>/assets/img/blog-img001.png">
-                            <div class="personal-info">
-                                <h5 class="province desc-13-normal">茨城県</h5>
-                                <h4 class="title desc-20-bold">小さなことから大きなことまでお手伝いします</h4>
-                                <p class="compnay desc-13-normal">株式会社鈴木工業</p>
-                                <p class="name desc-20-bold">鈴木 太郎</p>
-                            </div>
-                        </div>
-                        <p class="middle-desc desc-15-normal">インターネットの接続から、簡単なパソコン操作の指導も行います。<br>業務の自動化に必要なのは、現在の業務の洗い出しからはじめます。全従業員のインタビューからはじまり、設計がおわるまでは約2カ月です。<br>実現する業務の姿と、すべての予算を分かりやすく説明したうえで納得後に進めます。
-                        </p>
-                        <div class="bottom-table">
-                            <div class="row">
-                                <div class="item desc-15-bold">初回相談料</div>
-                                <div class="value desc-15-normal">無料</div>
-                                <div class="item desc-15-bold">所在地</div>
-                                <div class="value desc-15-normal">茨城県水戸市水戸町水戸番地4-20-23 水戸ビル</div>
-                            </div>
-                            <div class="row">
-                                <div class="item desc-15-bold">提供内容</div>
-                                <div class="value desc-15-normal">相談料 1回2時間 20,000円<br>
-                                経理業務自動化設計 150,000円～<br>
-                                受発注システムの構築 650,000円～</div>
-                            </div>
-                            <div class="row">
-                                <div class="item desc-15-bold">備考</div>
-                                <div class="value desc-15-normal">相談料 1回2時間 20,000円</div>
-                            </div>
-                        </div>
-                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "news"; ?>"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
+                        <a class="goto-page desc-15-bold" href="http://localhost/dx-robo/blog/%e5%b0%8f%e3%81%95%e3%81%aa%e3%81%93%e3%81%a8%e3%81%8b%e3%82%89%e5%a4%a7%e3%81%8d%e3%81%aa%e3%81%93%e3%81%a8%e3%81%be%e3%81%a7%e3%81%8a%e6%89%8b%e4%bc%9d%e3%81%84%e3%81%97%e3%81%be%e3%81%99/"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
                     </li>
                     <li class="blog-item">
                         <div class="top-wrapper">
@@ -209,9 +177,42 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                 <div class="value desc-15-normal">相談料 1回2時間 20,000円</div>
                             </div>
                         </div>
-                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "news"; ?>"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
+                        <a class="goto-page desc-15-bold" href="http://localhost/dx-robo/blog/%e5%b0%8f%e3%81%95%e3%81%aa%e3%81%93%e3%81%a8%e3%81%8b%e3%82%89%e5%a4%a7%e3%81%8d%e3%81%aa%e3%81%93%e3%81%a8%e3%81%be%e3%81%a7%e3%81%8a%e6%89%8b%e4%bc%9d%e3%81%84%e3%81%97%e3%81%be%e3%81%99/"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
+                    </li>
+                    <li class="blog-item">
+                        <div class="top-wrapper">
+                            <img src="<?php echo T_DIRE_URI; ?>/assets/img/blog-img001.png">
+                            <div class="personal-info">
+                                <h5 class="province desc-13-normal">茨城県</h5>
+                                <h4 class="title desc-20-bold">小さなことから大きなことまでお手伝いします</h4>
+                                <p class="company desc-13-normal">株式会社鈴木工業</p>
+                                <p class="name desc-20-bold">鈴木 太郎</p>
+                            </div>
+                        </div>
+                        <p class="middle-desc desc-15-normal">インターネットの接続から、簡単なパソコン操作の指導も行います。<br>業務の自動化に必要なのは、現在の業務の洗い出しからはじめます。全従業員のインタビューからはじまり、設計がおわるまでは約2カ月です。<br>実現する業務の姿と、すべての予算を分かりやすく説明したうえで納得後に進めます。
+                        </p>
+                        <div class="bottom-table">
+                            <div class="row">
+                                <div class="item desc-15-bold">初回相談料</div>
+                                <div class="value desc-15-normal">無料</div>
+                                <div class="item desc-15-bold">所在地</div>
+                                <div class="value desc-15-normal">茨城県水戸市水戸町水戸番地4-20-23 水戸ビル</div>
+                            </div>
+                            <div class="row">
+                                <div class="item desc-15-bold">提供内容</div>
+                                <div class="value desc-15-normal">相談料 1回2時間 20,000円<br>
+                                経理業務自動化設計 150,000円～<br>
+                                受発注システムの構築 650,000円～</div>
+                            </div>
+                            <div class="row">
+                                <div class="item desc-15-bold">備考</div>
+                                <div class="value desc-15-normal">相談料 1回2時間 20,000円</div>
+                            </div>
+                        </div>
+                        <a class="goto-page desc-15-bold" href="http://localhost/dx-robo/blog/%e5%b0%8f%e3%81%95%e3%81%aa%e3%81%93%e3%81%a8%e3%81%8b%e3%82%89%e5%a4%a7%e3%81%8d%e3%81%aa%e3%81%93%e3%81%a8%e3%81%be%e3%81%a7%e3%81%8a%e6%89%8b%e4%bc%9d%e3%81%84%e3%81%97%e3%81%be%e3%81%99/"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
                     </li>
                 </ul>
+                <a class="goto-page desc-15-bold" href="<?php echo HOME . "blog"; ?>"><i class="fa-solid fa-arrow-right"></i>全国のRPA導入士一覧に戻る</a>
             </div>
         </section>
     </main>
