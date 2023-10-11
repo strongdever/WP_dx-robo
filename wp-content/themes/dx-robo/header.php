@@ -116,12 +116,12 @@ $path_parts = pathinfo($path_parts);
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo HOME . 'relatedinfo'; ?>" class="menu-link">
+                    <a href="<?php echo HOME . 'consult'; ?>" class="menu-link">
                         <h5>RPA導入おまかせ紹介</h5>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo HOME . 'aboutus'; ?>" class="menu-link">
+                    <a href="<?php echo HOME . 'info'; ?>" class="menu-link">
                         <h5>関連補助金情報</h5>
                     </a>
                 </li>
@@ -153,12 +153,12 @@ $path_parts = pathinfo($path_parts);
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo HOME . 'relatedinfo'; ?>" class="menu-link">
+                    <a href="<?php echo HOME . 'consult'; ?>" class="menu-link">
                         <h5>RPA導入おまかせ紹介</h5>
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo HOME . 'aboutus'; ?>" class="menu-link">
+                    <a href="<?php echo HOME . 'info'; ?>" class="menu-link">
                         <h5>関連補助金情報</h5>
                     </a>
                 </li>

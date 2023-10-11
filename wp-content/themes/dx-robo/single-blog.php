@@ -38,10 +38,10 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                     <p class="company desc-13-normal">株式会社鈴木工業</p>
                                     <p class="name desc-20-bold">鈴木 太郎</p>
                                 </div>
-                                <a class="white btn">このRPA導入士に無料相談する</a>
+                                <a class="white btn" href="<?php echo HOME . 'intro-inquery'; ?>">このRPA導入士に無料相談する</a>
                             </div>
                         </div>
-                        <p class="middle-desc desc-15-normal">インターネットの接続から、簡単なパソコン操作の指導も行います。<br>業務の自動化に必要なのは、現在の業務の洗い出しからはじめます。全従業員のインタビューからはじまり、設計がおわるまでは約2カ月です。<br>実現する業務の姿と、すべての予算を分かりやすく説明したうえで納得後に進めます。
+                        <p class="middle-desc desc-15-normal">インターネットのs接続から、簡単なパソコン操作の指導も行います。<br>業務の自動化に必要なのは、現在の業務の洗い出しからはじめます。全従業員のインタビューからはじまり、設計がおわるまでは約2カ月です。<br>実現する業務の姿と、すべての予算を分かりやすく説明したうえで納得後に進めます。
                         </p>
                         <div class="bottom-table">
                             <div class="row">
@@ -61,29 +61,29 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                 <div class="value desc-15-normal">相談料 1回2時間 20,000円</div>
                             </div>
                         </div>
-                            <div class="career-wrapper">
-                                <div class="title-lable desc-15-bold">経歴</div>
-                                <p class="desc-15-normal">インターネットの接続から、簡単なパソコン操作の指導も行います。<br>
-                                業務の自動化に必要なのは、現在の業務の洗い出しからはじめます。全従業員のインタビューからはじまり、設計がおわるまでは約2カ月です。<br>
-                                実現する業務の姿と、すべての予算を分かりやすく説明したうえで納得後に進めます。</p>
-                            </div>
-                            <div class="qualification-wrapper">
-                                <div class="title-lable desc-15-bold">保有資格</div>
-                                <ul class="qualification-list desc-15-normal">
-                                    <li class="qualification-item">
-                                    アドバンスド RPA プロフェッショナル
-                                    </li>
-                                    <li class="qualification-item">
-                                    マスター RPA プロフェッショナル
-                                    </li>
-                                    <li class="qualification-item">
-                                    マスター RPA プロフェッショナル
-                                    </li>
-                                </ul>
-                            </div>
+                        <div class="career-wrapper">
+                            <div class="title-lable desc-15-bold">経歴</div>
+                            <p class="desc-15-normal">インターネットの接続から、簡単なパソコン操作の指導も行います。<br>
+                            業務の自動化に必要なのは、現在の業務の洗い出しからはじめます。全従業員のインタビューからはじまり、設計がおわるまでは約2カ月です。<br>
+                            実現する業務の姿と、すべての予算を分かりやすく説明したうえで納得後に進めます。</p>
+                        </div>
+                        <div class="qualification-wrapper">
+                            <div class="title-lable desc-15-bold">保有資格</div>
+                            <ul class="qualification-list desc-15-normal">
+                                <li class="qualification-item">
+                                アドバンスド RPA プロフェッショナル
+                                </li>
+                                <li class="qualification-item">
+                                マスター RPA プロフェッショナル
+                                </li>
+                                <li class="qualification-item">
+                                マスター RPA プロフェッショナル
+                                </li>
+                            </ul>
+                        </div>
                     </li>
                 </ul>
-                <a class="goto-page desc-15-bold" href="<?php echo HOME . "news"; ?>"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
+                <a class="goto-page desc-15-bold" href="<?php echo HOME . "blog"; ?>"><i class="fa-solid fa-arrow-right"></i>全国のRPA導入士一覧に戻る</a>
             </div>
         </section>
     </main>

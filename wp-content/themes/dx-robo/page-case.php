@@ -40,68 +40,68 @@
                     <ul class="case-list">
                         <li class="case-item">
                             <div class="row">
-                                <div class="head">利用者プロフィール</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">利用者プロフィール</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                             <div class="row">
-                                <div class="head">課題</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">課題</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                             <div class="row">
-                                <div class="head">何をしたか</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">何をしたか</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                             <div class="row">
-                                <div class="head">どのように<br>進めたか</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">どのように<br>進めたか</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                             <div class="row">
-                                <div class="head">どうなったか</div>
-                                <div class="content">利用者プロフィール</div>
-                            </div>
-                        </li>
-                        <li class="case-item">
-                            <div class="row">
-                                <div class="head">利用者プロフィール</div>
-                                <div class="content">利用者プロフィール</div>
-                            </div>
-                            <div class="row">
-                                <div class="head">課題</div>
-                                <div class="content">利用者プロフィール</div>
-                            </div>
-                            <div class="row">
-                                <div class="head">何をしたか</div>
-                                <div class="content">利用者プロフィール</div>
-                            </div>
-                            <div class="row">
-                                <div class="head">どのように<br>進めたか</div>
-                                <div class="content">利用者プロフィール</div>
-                            </div>
-                            <div class="row">
-                                <div class="head">どうなったか</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">どうなったか</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                         </li>
                         <li class="case-item">
                             <div class="row">
-                                <div class="head">利用者プロフィール</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">利用者プロフィール</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                             <div class="row">
-                                <div class="head">課題</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">課題</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                             <div class="row">
-                                <div class="head">何をしたか</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">何をしたか</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                             <div class="row">
-                                <div class="head">どのように<br>進めたか</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">どのように<br>進めたか</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                             <div class="row">
-                                <div class="head">どうなったか</div>
-                                <div class="content">利用者プロフィール</div>
+                                <div class="head desc-15-bold">どうなったか</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
+                            </div>
+                        </li>
+                        <li class="case-item">
+                            <div class="row">
+                                <div class="head desc-15-bold">利用者プロフィール</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
+                            </div>
+                            <div class="row">
+                                <div class="head desc-15-bold">課題</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
+                            </div>
+                            <div class="row">
+                                <div class="head desc-15-bold">何をしたか</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
+                            </div>
+                            <div class="row">
+                                <div class="head desc-15-bold">どのように<br>進めたか</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
+                            </div>
+                            <div class="row">
+                                <div class="head desc-15-bold">どうなったか</div>
+                                <div class="content desc-15-normal">利用者プロフィール</div>
                             </div>
                         </li>
                     </ul>

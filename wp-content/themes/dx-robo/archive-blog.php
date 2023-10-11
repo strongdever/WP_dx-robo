@@ -212,7 +212,6 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                         <a class="goto-page desc-15-bold" href="http://localhost/dx-robo/blog/%e5%b0%8f%e3%81%95%e3%81%aa%e3%81%93%e3%81%a8%e3%81%8b%e3%82%89%e5%a4%a7%e3%81%8d%e3%81%aa%e3%81%93%e3%81%a8%e3%81%be%e3%81%a7%e3%81%8a%e6%89%8b%e4%bc%9d%e3%81%84%e3%81%97%e3%81%be%e3%81%99/"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
                     </li>
                 </ul>
-                <a class="goto-page desc-15-bold" href="<?php echo HOME . "blog"; ?>"><i class="fa-solid fa-arrow-right"></i>全国のRPA導入士一覧に戻る</a>
             </div>
         </section>
     </main>
