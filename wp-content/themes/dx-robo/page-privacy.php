@@ -1,7 +1,7 @@
 <?php
 
 	/*
-	Template Name: Rule Template
+	Template Name: Privacy Template
 	*/
 
 	if ( ! defined( 'ABSPATH' ) ) exit;
@@ -23,13 +23,13 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
             <div class="container">
                 <a href="<?php echo HOME; ?>" class="link">トップページ</a>
                 <i class="fas fa-chevron-right"></i>
-                <h5 class="current-page">利用規約</h5>
+                <h5 class="current-page">プライバシーポリシー</h5>
             </div>
         </div>
         <div class="page-title">
             <div class="container">
-                <h5 class="en">TERMS OF SERVICE</h5>
-                <h2 class="jp">利用規約</h2>
+                <h5 class="en">PRIVACY POLICY</h5>
+                <h2 class="jp">プライバシーポリシー</h2>
             </div>
         </div>
         <div class="container">

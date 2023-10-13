@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 /*
-Theme Name: CxO人材バンク
+Theme Name: 業務自動化
 Author: Lovely-Dev
 Author URI: https://wordpress.org/
-Description: CxO人材バンクは、上場企業や上場準備企業など、成長企業、成長産業のCxOポジションに特化した人材紹介サービスを行っています。
+Description: 地域と中小企業のためのRPA導入支援サイト。あなたの会社の業務自動化設計を全国のRPA導入士が行います。
 Requires at least: 4.9.6
 Requires PHP: 5.2.4
 Version: 1.0
-Text Domain: cxojinzai
+Text Domain: dx-robo
 */
 
 
@@ -28,26 +28,26 @@ Text Domain: cxojinzai
   display: none;
 }
 
-body#bodynews .header .header-nav .nav-menu > li:first-child .menu-link {
-  color: #0099BD;
+body#bodyabout .header .header-nav .nav-menu > li:first-child .menu-link {
+  color: #009770;
 }
 
-body#bodyfeatures .header .header-nav .nav-menu > li:nth-child(2) .menu-link {
-  color: #0099BD;
+body#bodyblog .header .header-nav .nav-menu > li:nth-child(2) .menu-link {
+  color: #009770;
 }
 
-body#bodycase .header .header-nav .nav-menu > li:nth-child(3) .menu-link {
-  color: #0099BD;
+body#bodynews .header .header-nav .nav-menu > li:nth-child(3) .menu-link {
+  color: #009770;
 }
 
-body#bodyflow .header .header-nav .nav-menu > li:nth-child(4) .menu-link {
-  color: #0099BD;
+body#bodycase .header .header-nav .nav-menu > li:nth-child(4) .menu-link {
+  color: #009770;
 }
 
-body#bodyinterview .header .header-nav .nav-menu > li:nth-child(5) .menu-link {
-  color: #0099BD;
+body#bodyconsult .header .header-nav .nav-menu > li:nth-child(5) .menu-link {
+  color: #009770;
 }
 
-body#bodycolumn .header .header-nav .nav-menu > li:nth-child(6) .menu-link {
-  color: #0099BD;
+body#bodyinfo .header .header-nav .nav-menu > li:nth-child(6) .menu-link {
+  color: #009770;
 }

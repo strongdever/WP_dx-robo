@@ -70,7 +70,7 @@ $path_parts = pathinfo($path_parts);
             <div class="search-wraper">
                 <div class="search-top">
                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/right-arrow.svg" alt="左矢印">
-                    <p class="desc-15-bold">RPA導入士になるには？</p>
+                    <p class="desc-15-bold"><a href="<?php echo HOME . 'recruit'; ?>">RPA導入士になるには？</a></p>
                 </div>
                          
                 <div class="search-bar">
