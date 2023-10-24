@@ -533,7 +533,8 @@
                 display: flex;
                 align-items: center;
                 label {
-                    margin-left: 1.0rem;
+                    display: flex;
+                    align-items: center;
                 }
             }
         }

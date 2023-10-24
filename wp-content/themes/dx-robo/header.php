@@ -101,7 +101,7 @@ $path_parts = pathinfo($path_parts);
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo HOME . 'blog'; ?>" class="menu-link">
+                    <a href="<?php echo HOME . 'search'; ?>" class="menu-link">
                         <h5>全国のRPA導入士</h5>
                     </a>
                 </li>
@@ -138,7 +138,7 @@ $path_parts = pathinfo($path_parts);
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo HOME . 'blog'; ?>" class="menu-link">
+                    <a href="<?php echo HOME . 'search'; ?>" class="menu-link">
                         <h5>全国のRPA導入士</h5>
                     </a>
                 </li>

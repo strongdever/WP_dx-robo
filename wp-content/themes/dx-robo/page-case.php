@@ -1,7 +1,7 @@
 <?php
 
 	/*
-	Template Name: About Page Template
+	Template Name: Case Page Template
 	*/
 
 	if ( ! defined( 'ABSPATH' ) ) exit;

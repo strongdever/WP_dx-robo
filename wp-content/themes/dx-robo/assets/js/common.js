@@ -326,21 +326,21 @@
             }
         })
 
-        $('.checkbox-list input[type=checkbox]').on('click', function() {
-            if( !$(this).is(':checked') ) {
-                $(this).parent().parent().parent().find('.region input[type=checkbox]').prop('checked', false);
+        $('.province-list input[type=checkbox]').on('click', function() {
+            var subCheckbox_Wrapper = $(this).parent().parent().parent();
+            var region_Wrapper = $(this).parent().parent().parent().parent();
+            var checkedCount = subCheckbox_Wrapper.find('input[type="checkbox"]:checked').length;
+            var allCheckboxCount = subCheckbox_Wrapper.find('input[type="checkbox"]').length;
+            console.log(checkedCount + "   " + allCheckboxCount);
+            if(checkedCount == 0 ) {
+                region_Wrapper.find('.region input[type=checkbox]').prop('checked', false);
+                region_Wrapper.find('.region input[type=checkbox]').prop('indeterminate', false);
+            } else if ( checkedCount == allCheckboxCount ) {
+                region_Wrapper.find('.region input[type=checkbox]').prop('checked', true);
+                region_Wrapper.find('.region input[type=checkbox]').prop('indeterminate', false);
             } else {
-                var allChecked = true;
-                var allUnChecked = true;
-                $(this).parent().parent().find('input[type=checkbox]').each(function() {
-                    if (!$(this).prop('checked')) {
-                        allChecked = false;
-                        return false; // Exit the loop early
-                    }
-                })
-                if( allChecked ) {
-                    $(this).parent().parent().parent().find('.region input[type=checkbox]').prop('checked', true);
-                    $(this).parent().parent().parent().find('.region input[type=checkbox]').prop('checked', false);
+                if( !region_Wrapper.hasClass("somechecked") ) {
+                    region_Wrapper.find('.region input[type=checkbox]').prop('indeterminate', true);
                 }
             }
         })

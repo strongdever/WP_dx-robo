@@ -4305,7 +4305,12 @@ body.mobile-nav-active #mobile-nav {
 }
 
 #archive-blog .search-wrapper .checkbox-list .item label {
-  margin-left: 1.0rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 #archive-blog .search-wrapper .btn {
@@ -6040,7 +6045,6 @@ input[type=checkbox] {
   position: relative;
   border-radius: 2px !important;
   border: 1px solid #009770 !important;
-  background: none;
   cursor: pointer;
   line-height: 0;
   outline: 0;
@@ -6050,6 +6054,7 @@ input[type=checkbox] {
   width: 1.6rem !important;
   -webkit-appearance: none;
   opacity: 1;
+  background: #FFF;
   margin: 0 !important;
 }
 
@@ -6076,6 +6081,21 @@ input[type=checkbox]:before {
   -webkit-transform: rotate(45deg) translate(-50%, -50%);
           transform: rotate(45deg) translate(-50%, -50%);
   z-index: 2;
+}
+
+input[type=checkbox]:indeterminate {
+  background: #009770;
+}
+
+input[type=checkbox]:indeterminate:before {
+  border-width: 0;
+  -webkit-transform: unset;
+          transform: unset;
+  width: 6px;
+  height: 6px;
+  top: 5px;
+  left: 5px;
+  background: #FFF;
 }
 
 .pager__wrap {
