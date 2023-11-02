@@ -32,6 +32,7 @@ body#bodyabout .header .header-nav .nav-menu > li:first-child .menu-link {
   color: #009770;
 }
 
+body#bodysearch .header .header-nav .nav-menu > li:nth-child(2) .menu-link,
 body#bodyblog .header .header-nav .nav-menu > li:nth-child(2) .menu-link {
   color: #009770;
 }

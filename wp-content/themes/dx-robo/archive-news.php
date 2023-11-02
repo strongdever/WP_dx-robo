@@ -14,9 +14,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                 <div class="container">
                     <a href="<?php echo HOME; ?>" class="link">トップページ</a>
                     <i class="fas fa-chevron-right"></i>
-                    <a href="<?php echo HOME . 'news'; ?>" class="link">RPAニュース</a>
-                    <i class="fas fa-chevron-right"></i>
-                    <h5 class="current-page"><?php the_title(); ?></h5>
+                    <h5 class="current-page">RPAニュース</h5>
                 </div>
             </div>
             <div class="page-title">
@@ -33,7 +31,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                     $args = [
                         'post_type' => 'news',
                         'post_status' => 'publish',
-                        'paged' => $paged,
+                        'paged' => 1,
                         'posts_per_page' => 1,
                         'orderby' => 'post_date',
                         'order' => 'DESC'

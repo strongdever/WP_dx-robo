@@ -1,10 +1,24 @@
-<?php get_header(); ?>
+<?php
+
+	/*
+	Template Name: Page Search Template
+	*/
+
+	if ( ! defined( 'ABSPATH' ) ) exit;
+	get_header();
+
+?>
 <?php
 
 $path_parts = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
 $path_parts = pathinfo($path_parts);
 
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+$work_scopes = get_query_var('work-scope') ? wp_unslash((array)get_query_var('work-scope')) : [];
+$province_names = get_query_var('province-name') ? wp_unslash((array)get_query_var('province-name')) : [];
+$search_key = get_query_var('s-key') ? get_query_var('s-key') : '';
+$s_keys = explode(' ', $search_key);
+update_blog_meta_keys();
 // $cat_slug = get_query_var('blog-category') ? get_query_var('blog-category') : "";
 
 ?>
@@ -25,7 +39,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
         </div>
         <section class="search-pannel">
             <div class="container">
-                <div class="search-wrapper">
+                <div class="search-wrapper" action="<?php echo HOME . 'search'; ?>" method="get" id="myForm">
                     <div class="top-label desc-20-bold">検索条件</div>
                     <?php
                     $parent_cat = get_term_by('name', '対応できる業務範囲を選択', 'blog-category');
@@ -50,7 +64,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             <?php foreach( $child_cats as $child_cat ) : ?>
                             <li class="item">
                                 <label class="desc-15-bold">
-                                    <input type="checkbox" id="<?php echo $child_cat->slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $child_cat->name; ?>">&nbsp;&nbsp;<?php echo $child_cat->name; ?>
+                                    <input type="checkbox" class="work-scope" id="<?php echo $child_cat->slug; ?>" name="work-scope[]" value="<?php echo $child_cat->name; ?>" <?php echo in_array($child_cat->name, $work_scopes) ? 'checked' : ''; ?>>&nbsp;&nbsp;<?php echo $child_cat->name; ?>
                                 </label>
                             </li>
                             <?php endforeach; ?>
@@ -79,9 +93,9 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             ) );
                             if( $child_cats ) {
                             ?>
-                            <li class="region-item">
+                            <li class="region-item hokkaido-tohku">
                                 <div class="region">
-                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $parent_name; ?>">
+                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="" value="<?php echo $parent_name; ?>">
                                     <label class="desc-15-bold"><?php echo $parent_name; ?></label>
                                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/down-mark.svg">
                                 </div>
@@ -89,7 +103,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                     <?php foreach( $child_cats as $child_cat ) : ?>
                                     <li class="item">
                                         <label class="desc-15-bold">
-                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $child_cat->name; ?>">&nbsp;&nbsp;<?php echo $child_cat->name; ?>
+                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" class="province-name" name="province-name[]" value="<?php echo $child_cat->name; ?>" <?php echo in_array($child_cat->name, $province_names) ? 'checked' : ''; ?>>&nbsp;&nbsp;<?php echo $child_cat->name; ?>
                                         </label>
                                     </li>
                                     <?php endforeach; ?>
@@ -114,9 +128,9 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             ) );
                             if( $child_cats ) {
                             ?>
-                            <li class="region-item">
+                            <li class="region-item kanto">
                                 <div class="region">
-                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $parent_name; ?>">
+                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="" value="<?php echo $parent_name; ?>">
                                     <label class="desc-15-bold"><?php echo $parent_name; ?></label>
                                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/down-mark.svg">
                                 </div>
@@ -124,7 +138,41 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                     <?php foreach( $child_cats as $child_cat ) : ?>
                                     <li class="item">
                                         <label class="desc-15-bold">
-                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $child_cat->name; ?>">&nbsp;&nbsp;<?php echo $child_cat->name; ?>
+                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" class="province-name" name="province-name[]" value="<?php echo $child_cat->name; ?>" <?php echo in_array($child_cat->name, $province_names) ? 'checked' : ''; ?>>&nbsp;&nbsp;<?php echo $child_cat->name; ?>
+                                        </label>
+                                    </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                            <?php
+                            }
+                            ?>
+
+                            <?php
+                            $parent_cat = get_term_by('name', '中部', 'blog-category');
+                            $parent_cat_id = $parent_cat->term_id;
+                            $parent_slug = $parent_cat->slug;
+                            $parent_name = $parent_cat->name;
+                            $child_cats = get_terms( array(
+                                'taxonomy'   => 'blog-category',
+                                'parent'     => $parent_cat_id,
+                                'orderby' => 'ID',
+                                'order' => 'ASC',
+                                'hide_empty' => false,
+                            ) );
+                            if( $child_cats ) {
+                            ?>
+                            <li class="region-item chubu">
+                                <div class="region">
+                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="" value="<?php echo $parent_name; ?>">
+                                    <label class="desc-15-bold"><?php echo $parent_name; ?></label>
+                                    <img src="<?php echo T_DIRE_URI; ?>/assets/img/down-mark.svg">
+                                </div>
+                                <ul class="province-list checkbox-list">
+                                    <?php foreach( $child_cats as $child_cat ) : ?>
+                                    <li class="item">
+                                        <label class="desc-15-bold">
+                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" class="province-name" name="province-name[]" value="<?php echo $child_cat->name; ?>" <?php echo in_array($child_cat->name, $province_names) ? 'checked' : ''; ?>>&nbsp;&nbsp;<?php echo $child_cat->name; ?>
                                         </label>
                                     </li>
                                     <?php endforeach; ?>
@@ -148,9 +196,9 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             ) );
                             if( $child_cats ) {
                             ?>
-                            <li class="region-item">
+                            <li class="region-item kinki">
                                 <div class="region">
-                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $parent_name; ?>">
+                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="" value="<?php echo $parent_name; ?>">
                                     <label class="desc-15-bold"><?php echo $parent_name; ?></label>
                                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/down-mark.svg">
                                 </div>
@@ -158,7 +206,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                     <?php foreach( $child_cats as $child_cat ) : ?>
                                     <li class="item">
                                         <label class="desc-15-bold">
-                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $child_cat->name; ?>">&nbsp;&nbsp;<?php echo $child_cat->name; ?>
+                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" class="province-name" name="province-name[]" value="<?php echo $child_cat->name; ?>" <?php echo in_array($child_cat->name, $province_names) ? 'checked' : ''; ?>>&nbsp;&nbsp;<?php echo $child_cat->name; ?>
                                         </label>
                                     </li>
                                     <?php endforeach; ?>
@@ -182,9 +230,9 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             ) );
                             if( $child_cats ) {
                             ?>
-                            <li class="region-item">
+                            <li class="region-item chuugoku">
                                 <div class="region">
-                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $parent_name; ?>">
+                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="" value="<?php echo $parent_name; ?>">
                                     <label class="desc-15-bold"><?php echo $parent_name; ?></label>
                                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/down-mark.svg">
                                 </div>
@@ -192,7 +240,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                     <?php foreach( $child_cats as $child_cat ) : ?>
                                     <li class="item">
                                         <label class="desc-15-bold">
-                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $child_cat->name; ?>">&nbsp;&nbsp;<?php echo $child_cat->name; ?>
+                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" class="province-name" name="province-name[]" value="<?php echo $child_cat->name; ?>" <?php echo in_array($child_cat->name, $province_names) ? 'checked' : ''; ?>>&nbsp;&nbsp;<?php echo $child_cat->name; ?>
                                         </label>
                                     </li>
                                     <?php endforeach; ?>
@@ -216,9 +264,9 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             ) );
                             if( $child_cats ) {
                             ?>
-                            <li class="region-item">
+                            <li class="region-item shikoku">
                                 <div class="region">
-                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $parent_name; ?>">
+                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="" value="<?php echo $parent_name; ?>">
                                     <label class="desc-15-bold"><?php echo $parent_name; ?></label>
                                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/down-mark.svg">
                                 </div>
@@ -226,7 +274,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                     <?php foreach( $child_cats as $child_cat ) : ?>
                                     <li class="item">
                                         <label class="desc-15-bold">
-                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $child_cat->name; ?>">&nbsp;&nbsp;<?php echo $child_cat->name; ?>
+                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" class="province-name" name="province-name[]" value="<?php echo $child_cat->name; ?>" <?php echo in_array($child_cat->name, $province_names) ? 'checked' : ''; ?>>&nbsp;&nbsp;<?php echo $child_cat->name; ?>
                                         </label>
                                     </li>
                                     <?php endforeach; ?>
@@ -250,9 +298,9 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             ) );
                             if( $child_cats ) {
                             ?>
-                            <li class="region-item">
+                            <li class="region-item kyushu-okinawa">
                                 <div class="region">
-                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $parent_name; ?>">
+                                    <input type="checkbox" id="<?php echo $parent_slug; ?>" name="" value="<?php echo $parent_name; ?>">
                                     <label class="desc-15-bold"><?php echo $parent_name; ?></label>
                                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/down-mark.svg">
                                 </div>
@@ -260,7 +308,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                     <?php foreach( $child_cats as $child_cat ) : ?>
                                     <li class="item">
                                         <label class="desc-15-bold">
-                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" name="<?php echo $parent_slug; ?>" value="<?php echo $child_cat->name; ?>">&nbsp;&nbsp;<?php echo $child_cat->name; ?>
+                                            <input type="checkbox" id="<?php echo $child_cat->slug; ?>" class="province-name" name="province-name[]" value="<?php echo $child_cat->name; ?>" <?php echo in_array($child_cat->name, $province_names) ? 'checked' : ''; ?>>&nbsp;&nbsp;<?php echo $child_cat->name; ?>
                                         </label>
                                     </li>
                                     <?php endforeach; ?>
@@ -271,72 +319,223 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             ?>
                         </ul>
                     </div>
-                    <a href="<?php echo HOME . 'blog'; ?>" class="btn"><i class="fas fa-search" style="color: #ffffff;"></i>この条件で検索する</a>
+                    <a class="btn"><i class="fas fa-search" style="color: #ffffff;"></i>この条件で検索する</a>
                 </div>
             </div>
+            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </section>
         
-        <?php
-            $numbersPerPage = 5;
-            $args = [
-                'post_type' => 'blog',
-                'post_status' => 'publish',
-                'paged' => $paged,
-                'posts_per_page' => $numbersPerPage,
-                'orderby' => 'post_date',
-                'order' => 'DESC'
-            ];
-            $custom_query = new WP_Query( $args );
-        ?>
+        <div class="blog-wrapper">
+            <?php
+                $numbersPerPage = 5;
+                $args = [
+                    'post_type' => 'blog',
+                    'post_status' => 'publish',
+                    'paged' => $paged,
+                    'posts_per_page' => $numbersPerPage,
+                    'orderby' => 'post_date',
+                    'order' => 'DESC'
+                ];
 
-        <div class="container">
-            <div class="display-number desc-15-normal">
-                <span class="desc-20-bold">5</span>件（1～5件を表示中）
-            </div>
-        </div>
+                $tax_query = [];
 
-        <?php if( $custom_query->have_posts() ) : ?>
-        <section class="blog-pannel">
+                if( $work_scopes ) {
+                    $tax_query[] = [
+                        'taxonomy' => 'blog-category',
+                        'field' => 'name',
+                        'terms' => $work_scopes
+                    ];
+                }
+
+                if( $province_names ) {
+                    $tax_query[] = [
+                        'taxonomy' => 'blog-category',
+                        'field' => 'name',
+                        'terms' => $province_names
+                    ];
+                }
+            
+                if ( !empty($tax_query) ) {
+                    $args['tax_query'] = $tax_query;
+                }
+
+                if( $s_keys ) {
+                    $meta_query = [
+                        'relation' => 'OR',
+                    ];
+                    foreach( $s_keys as $s_key ) {
+                        if( !$s_key ) {
+                            continue;
+                        }
+                        $meta_query[] = array(
+                            'key'     => 'blog_title', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                        $meta_query[] = array(
+                            'key'     => 'blog_content', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                        $meta_query[] = array(
+                            'key'     => 'company', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                        $meta_query[] = array(
+                            'key'     => 'name', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                        $meta_query[] = array(
+                            'key'     => 'fee', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                        $meta_query[] = array(
+                            'key'     => 'location', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                        $meta_query[] = array(
+                            'key'     => 'provide_content', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                        $meta_query[] = array(
+                            'key'     => 'remarks', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                        $meta_query[] = array(
+                            'key'     => 'career', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                        $meta_query[] = array(
+                            'key'     => 'qualification-list', // Replace with the custom field key if needed
+                            'value'   => $s_key, // Replace with your search keywords
+                            'compare' => 'LIKE',
+                        );
+                    }
+                    $args['meta_query'] = $meta_query;
+                }
+                
+                $custom_query = new WP_Query( $args );
+            ?>
+            <?php
+            $total_counts = $custom_query->found_posts;
+            $first_number = $total_counts == 0 ? 0 : ($paged - 1) * $numbersPerPage + 1;
+            $second_number = ($paged * $numbersPerPage) > $total_counts ? $total_counts : ($paged * $numbersPerPage);
+            ?>
             <div class="container">
-                <ul class="blog-list">
-                    <?php while( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
-                    <li class="blog-item">
-                        <div class="top-wrapper">
-                            <img src="<?php echo T_DIRE_URI; ?>/assets/img/blog-img001.png">
-                            <div class="personal-info">
-                                <h5 class="province desc-13-normal">茨城県</h5>
-                                <h4 class="title desc-20-bold">小さなことから大きなことまでお手伝いします</h4>
-                                <p class="company desc-13-normal">株式会社鈴木工業</p>
-                                <p class="name desc-20-bold">鈴木 太郎</p>
-                            </div>
-                        </div>
-                        <p class="middle-desc desc-15-normal">インターネットの接続から、簡単なパソコン操作の指導も行います。<br>業務の自動化に必要なのは、現在の業務の洗い出しからはじめます。全従業員のインタビューからはじまり、設計がおわるまでは約2カ月です。<br>実現する業務の姿と、すべての予算を分かりやすく説明したうえで納得後に進めます。
-                        </p>
-                        <div class="bottom-table">
-                            <div class="row">
-                                <div class="item desc-15-bold">初回相談料</div>
-                                <div class="value desc-15-normal">無料</div>
-                                <div class="item desc-15-bold">所在地</div>
-                                <div class="value desc-15-normal">茨城県水戸市水戸町水戸番地4-20-23 水戸ビル</div>
-                            </div>
-                            <div class="row">
-                                <div class="item desc-15-bold">提供内容</div>
-                                <div class="value desc-15-normal">相談料 1回2時間 20,000円<br>
-                                経理業務自動化設計 150,000円～<br>
-                                受発注システムの構築 650,000円～</div>
-                            </div>
-                            <div class="row">
-                                <div class="item desc-15-bold">備考</div>
-                                <div class="value desc-15-normal">相談料 1回2時間 20,000円</div>
-                            </div>
-                        </div>
-                        <a class="goto-page desc-15-bold" href="http://localhost/dx-robo/blog/%e5%b0%8f%e3%81%95%e3%81%aa%e3%81%93%e3%81%a8%e3%81%8b%e3%82%89%e5%a4%a7%e3%81%8d%e3%81%aa%e3%81%93%e3%81%a8%e3%81%be%e3%81%a7%e3%81%8a%e6%89%8b%e4%bc%9d%e3%81%84%e3%81%97%e3%81%be%e3%81%99/"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
-                    </li>
-                    <?php endwhile; ?>
-                </ul>
+                <div class="display-number desc-15-normal">
+                    <span class="desc-20-bold"><?php echo $total_counts; ?></span>件（<?php echo $first_number; ?>～<?php echo $second_number; ?>件を表示中）
+                </div>
             </div>
-        </section>
-        <?php endif; ?>
+
+            <?php if( $custom_query->have_posts() ) : ?>
+            <section class="blog-pannel">
+                <div class="container">
+                    <ul class="blog-list">
+                        <?php while( $custom_query->have_posts() ) : $custom_query->the_post(); ?>
+                        <li class="blog-item">
+                            <div class="top-wrapper">
+                                <img src="<?php echo T_DIRE_URI; ?>/assets/img/blog-img001.png">
+                                <div class="personal-info">
+                                    <div class="provinces">
+                                        <?php
+                                        $post_cats = get_the_terms(get_the_ID(), 'blog-category');
+                                        if( $post_cats ) :
+                                            foreach($post_cats as $post_cat) :
+                                                $parent_cat = get_term($post_cat->parent, 'blog-category');
+                                                $root_cat = $parent_cat->parent;
+                                                if($root_cat == 62 ) :  //都道府県
+                                        ?>
+                                        <h5 class="province desc-13-normal"><?php echo $post_cat->name; ?></h5>
+                                        <?php 
+                                                endif;
+                                            endforeach;
+                                        endif; ?>
+                                    </div>
+                                    <h4 class="title desc-20-bold"><?php the_title(); ?></h4>
+                                    <p class="company desc-13-normal"><?php echo get_field('company'); ?></p>
+                                    <p class="name desc-20-bold"><?php echo get_field('name'); ?></p>
+                                </div>
+                            </div>
+                            <p class="middle-desc desc-15-normal"><?php the_content(); ?></p>
+                            <div class="bottom-table">
+                                <div class="row">
+                                    <div class="item desc-15-bold">初回相談料</div>
+                                    <div class="value desc-15-normal"><?php echo get_field('fee'); ?></div>
+                                    <div class="item desc-15-bold">所在地</div>
+                                    <div class="value desc-15-normal"><?php echo get_field('location'); ?></div>
+                                </div>
+                                <div class="row">
+                                    <div class="item desc-15-bold">提供内容</div>
+                                    <div class="value desc-15-normal"><?php echo wp_kses_post ( get_field('provide_content') ); ?></div>
+                                </div>
+                                <div class="row">
+                                    <div class="item desc-15-bold">備考</div>
+                                    <div class="value desc-15-normal"><?php echo wp_kses_post ( get_field('remarks') ); ?></div>
+                                </div>
+                            </div>
+                            <a class="goto-page desc-15-bold" href="<?php the_permalink(); ?>"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
+                        </li>
+                        <?php endwhile; ?>
+                    </ul>
+                </div>
+            </section>
+            <?php endif; ?>
+        </div>
     </main>
+
+    <script type="text/javascript">
+        !(function ($) {
+            $(document).ready(function(){
+                var work_scope = [];
+                var province_name = [];
+                var paged = 1;
+
+                $('.btn').click(function() {
+                    work_scope = [];
+                    province_name = [];
+                    $('.work-scope:checked').each(function() {
+                        work_scope.push($(this).val());
+                    });
+                    $('.province-name:checked').each(function() {
+                        province_name.push($(this).val());
+                    });
+                    paged = "<?php echo $paged; ?>";
+                    async_Request(work_scope, province_name, paged);
+                });
+            });
+
+            function async_Request(work_scope, province_name, paged) {  //ajax request function
+                $(".lds-spinner").show();
+                console.log(work_scope);
+                var data = {
+                    work_scope: work_scope,
+                    province_name: province_name,
+                    paged: paged
+                }
+                $.ajax({
+                    url: ajax_object.ajax_url,
+                    type: 'POST',
+                    data: {
+                        action: 'my_ajax_action',
+                        my_data: data
+                    },
+                    success: function(response) {
+                        // Handle the response
+                        blog_data = response.data['blog_data'];
+                        $('.blog-wrapper').empty();
+                        $('.blog-wrapper').append(blog_data);
+                        $(".lds-spinner").hide();
+                    },
+                });
+            }
+        })(jQuery);
+    </script>
 
 <?php get_footer(); ?>

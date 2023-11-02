@@ -98,15 +98,10 @@ function theme_add_files() {
     wp_enqueue_style('c-common', T_DIRE_URI.'/assets/css/common.css', [], '1.0', 'all');
     wp_enqueue_style('c-style', T_DIRE_URI.'/assets/css/style.css', [], '1.0', 'all');
     wp_enqueue_style('c-theme', T_DIRE_URI.'/style.css', [], '1.0', 'all');
-    // WordPress本体のjquery.jsを読み込まない
-    if(!is_admin()) {
-        wp_deregister_script('jquery');
-    }
 
     wp_enqueue_script('s-jquery', T_DIRE_URI.'/assets/js/jquery.min.js', [], '1.0', false);
-    // wp_enqueue_script('s-slick', 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.js', [], '1.0', true);
-    // wp_enqueue_script('s-fontawesome', 'https://kit.fontawesome.com/8cbdf0a85f.js', [], '1.0', true);  
-    // wp_enqueue_script('s-common', T_DIRE_URI.'/assets/js/common.js', [], '1.0', true);  
+    wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/page-search.php', array( 'jquery' ), '1.0', true );
+    wp_localize_script( 'ajax-script', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) ); 
 }
 
 add_action('wp_enqueue_scripts', 'theme_add_files');
@@ -143,6 +138,13 @@ function custom_term_radio_checklist( $args ) {
 }
 
 add_filter( 'wp_terms_checklist_args', 'custom_term_radio_checklist' );
+
+add_filter('query_vars', function($vars) {
+	$vars[] = 'work-scope';
+    $vars[] = 'province-name';
+    $vars[] = 's-key';
+	return $vars;
+});
 
 function theme_custom_setup() {
     add_theme_support( 'post-thumbnails' ); 
@@ -260,6 +262,149 @@ function custom_pagination($total_pages, $current_page = 1, $total_counts = 0) {
     </div>
     <?php endif; ?>
 <?php
+}
+
+//Ajax response for the candidate-list page
+function handle_ajax_request() {
+    // Retrieve the data
+    $data = $_POST['my_data'];
+    
+    // Access the individual values
+    $work_scopes = $data['work_scope'];
+    $province_names = $data['province_name'];
+    $paged = $data['paged'];
+
+    $numbersPerPage = 5;
+    $args = [
+        'post_type' => 'blog',
+        'post_status' => 'publish',
+        'paged' => $paged,
+        'posts_per_page' => $numbersPerPage,
+        'orderby' => 'post_date',
+        'order' => 'DESC'
+    ];
+
+    $tax_query = [];
+
+    if( $work_scopes ) {
+        $tax_query[] = [
+            'taxonomy' => 'blog-category',
+            'field' => 'name',
+            'terms' => $work_scopes
+        ];
+    }
+
+    if( $province_names ) {
+        $tax_query[] = [
+            'taxonomy' => 'blog-category',
+            'field' => 'name',
+            'terms' => $province_names
+        ];
+    }
+
+    if ( !empty($tax_query) ) {
+        $args['tax_query'] = $tax_query;
+    }
+    
+    $custom_query = new WP_Query( $args );
+
+    $total_counts = $custom_query->found_posts;
+    $first_number = $total_counts == 0 ? 0 : ($paged - 1) * $numbersPerPage + 1;
+    $second_number = ($paged * $numbersPerPage) > $total_counts ? $total_counts : ($paged * $numbersPerPage);
+
+    $blog_data = 
+    '<div class="container">
+        <div class="display-number desc-15-normal">';
+    $blog_data = $blog_data . 
+            '<span class="desc-20-bold">' . $total_counts . '</span>件（' . $first_number . '～' . $second_number . '件を表示中）
+        </div>
+    </div>';
+
+    if( $custom_query->have_posts() ) :
+    $blog_data = $blog_data . 
+    '<section class="blog-pannel">
+        <div class="container">
+            <ul class="blog-list">';
+                while( $custom_query->have_posts() ) : $custom_query->the_post();
+    $blog_data = $blog_data . 
+                '<li class="blog-item">
+                    <div class="top-wrapper">
+                        <img src="' . T_DIRE_URI . '/assets/img/blog-img001.png">
+                        <div class="personal-info">
+                            <div class="provinces">';
+                                $post_cats = get_the_terms(get_the_ID(), 'blog-category');
+                                if( $post_cats ) :
+                                    foreach($post_cats as $post_cat) :
+                                        $parent_cat = get_term($post_cat->parent, 'blog-category');
+                                        $root_cat = $parent_cat->parent;
+                                        if($root_cat == 62 ) :  //都道府県
+    $blog_data = $blog_data . 
+                                '<h5 class="province desc-13-normal">' . $post_cat->name . '</h5>';
+                                        endif;
+                                    endforeach;
+                                endif;
+    $blog_data = $blog_data . 
+                            '</div>
+                            <h4 class="title desc-20-bold">' . get_the_title() . '</h4>
+                            <p class="company desc-13-normal">' . get_field('company') . '</p>
+                            <p class="name desc-20-bold">' . get_field('name') . '</p>
+                        </div>
+                    </div>
+                    <p class="middle-desc desc-15-normal">' . get_the_content() . '</p>
+                    <div class="bottom-table">
+                        <div class="row">
+                            <div class="item desc-15-bold">初回相談料</div>
+                            <div class="value desc-15-normal">' . get_field('fee') . '</div>
+                            <div class="item desc-15-bold">所在地</div>
+                            <div class="value desc-15-normal">' . get_field('location') . '</div>
+                        </div>
+                        <div class="row">
+                            <div class="item desc-15-bold">提供内容</div>
+                            <div class="value desc-15-normal">' . wp_kses_post ( get_field('provide_content') ) . '</div>
+                        </div>
+                        <div class="row">
+                            <div class="item desc-15-bold">備考</div>
+                            <div class="value desc-15-normal">' . wp_kses_post ( get_field('remarks') ) . '</div>
+                        </div>
+                    </div>
+                    <a class="goto-page desc-15-bold" href="' . get_the_permalink() . '"><i class="fa-solid fa-arrow-right"></i>このRPA診断士の詳細はこちら</a>
+                </li>';
+                endwhile;
+    $blog_data = $blog_data . 
+            '</ul>
+        </div>
+    </section>';
+    endif;
+
+    $response = array(
+        'blog_data' => $blog_data,
+        'message' => 'Data received and processed successfully!',
+    );
+    // echo "sdgsgsergrstg";
+    wp_send_json_success( $response );
+    wp_die();
+}
+add_action( 'wp_ajax_my_ajax_action', 'handle_ajax_request' );
+add_action( 'wp_ajax_nopriv_my_ajax_action', 'handle_ajax_request' );
+
+//Update the meta keys of the title and the content of the blog.
+function update_blog_meta_keys() {
+    $args = [
+        'post_type' => 'blog',
+        'post_status' => 'publish',
+        'posts_per_page' => -1,
+    ];
+
+    $custom_query = new WP_Query( $args );
+    if($custom_query->have_posts()) {
+        while($custom_query->have_posts()) : $custom_query->the_post();
+            $blog_ID = get_the_ID();
+            $blog_title = get_the_title();
+            $blog_content = get_the_content();
+            update_post_meta( $blog_ID, 'blog_title', $blog_title );
+            update_post_meta( $blog_ID, 'blog_content', $blog_content );
+        endwhile;
+    }
 }
 
 ?>

@@ -14,7 +14,9 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                 <div class="container">
                     <a href="<?php echo HOME; ?>" class="link">トップページ</a>
                     <i class="fas fa-chevron-right"></i>
-                    <h5 class="current-page">RPAニュース</h5>
+                    <a class="link" href="<?php echo HOME . 'news'; ?>">RPAニュース</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <h5 class="current-page"><?php the_title(); ?></h5>
                 </div>
             </div>
             <div class="page-title">

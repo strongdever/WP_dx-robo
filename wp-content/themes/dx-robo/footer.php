@@ -31,7 +31,7 @@
 						<p class="content">RPA導入士からの<br>返信をお待ちください</p>
 					</li>
 				</ul>
-				<a href="<?php echo HOME . 'blog'; ?>" class="btn"><i class="fas fa-search" style="color: #ffffff;"></i>全国のRPA導入士を見る</a>
+				<a href="<?php echo HOME . 'search'; ?>" class="btn"><i class="fas fa-search" style="color: #ffffff;"></i>全国のRPA導入士を見る</a>
 			</div>
 		</section>
         <section class="goto-contact">
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <p class="want-label title-32-bold">まずはお気軽にご相談ください</p>
-                <a class="white btn">ご希望・相談入力フォーム</a>
+                <a class="white btn" href="<?php echo HOME . 'inquery'; ?>">ご希望・相談入力フォーム</a>
             </div>
         </section>
         <section class="footer-bottom">

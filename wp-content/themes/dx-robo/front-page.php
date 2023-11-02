@@ -20,7 +20,7 @@
 					<p class="circle-text">オンライン対応<br>可能</p>
 					<p class="circle-text">補助金の<br>活用方法も<br>相談可</p>
 				</div>
-				<a href="<?php echo HOME . 'blog'; ?>" class="btn"><i class="fas fa-search" style="color: #ffffff;"></i>全国のRPA導入士を見る</a>
+				<a href="<?php echo HOME . 'search'; ?>" class="btn"><i class="fas fa-search" style="color: #ffffff;"></i>全国のRPA導入士を見る</a>
 			</div>
 			<div class="view-right">
 				<img src="<?php echo T_DIRE_URI; ?>/assets/img/first-view.svg">
