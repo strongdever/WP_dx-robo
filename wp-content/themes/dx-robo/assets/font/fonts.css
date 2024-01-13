@@ -35,10 +35,3 @@
     font-style: normal;
     font-weight: 300;
 }
-
-@font-face {
-    font-family: 'Helvetica';
-    src: url('Helvetica Oblique.ttf') format('truetype');
-    font-style: normal;
-    font-weight: bold;
-}

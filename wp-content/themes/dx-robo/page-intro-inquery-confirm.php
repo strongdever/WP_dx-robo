@@ -1,6 +1,6 @@
 <?php 
 /*
-Template Name: Intro Inquery Confirm Template
+Template Name: Intro inquiry Confirm Template
 */
 get_header(); 
 ?>
@@ -14,7 +14,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
 ?>
 
-    <main id="intro-inquery-confirm-page">
+    <main id="intro-inquiry-confirm-page">
         <div class="bread-crump">
             <div class="container">
                 <a href="<?php echo HOME; ?>" class="link">トップページ</a>

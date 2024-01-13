@@ -4,7 +4,7 @@
                 <nav class="footer-nav-container">
                     <ul class="footer-nav-menu">
                         <li>
-                            <a href="<?php echo HOME . 'about'; ?>" class="menu-link">
+                            <a href="<?php echo HOME . 'company'; ?>" class="menu-link">
                                 <h5>運営会社</h5>
                             </a>
                         </li>
@@ -23,7 +23,7 @@
                 <a href="<?php echo HOME; ?>">
                     <img src="<?php echo T_DIRE_URI; ?>/assets/img/logo.png" alt="業務自動化ロボット導入ガイド" class="logo">
                 </a>
-                <p class="copyright">© IR robotics All Rights Reserved.</p>
+                <p class="copyright">© 業務自動化ロボット導入ガイド All Rights Reserved.</p>
             </div>
         </section>
     </footer>

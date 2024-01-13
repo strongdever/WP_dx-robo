@@ -93,7 +93,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                 1/2等の補助、最大350万円補助されます。</p>
                             </div>
                         </div>
-                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "inquery"; ?>"><i class="fa-solid fa-arrow-right"></i>詳細はお問い合わせください</a>
+                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "inquiry"; ?>"><i class="fa-solid fa-arrow-right"></i>詳細はお問い合わせください</a>
                     </li>
                     <li class="subsidy-item">
                         <p class="head-label desc-24-bold">小規模事業者持続化補助金</p>
@@ -109,7 +109,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                 <p class="content desc-16-bold">補助率2/3で通常枠で50万円、最大200万円補助されます。</p>
                             </div>
                         </div>
-                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "inquery"; ?>"><i class="fa-solid fa-arrow-right"></i>詳細はお問い合わせください</a>
+                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "inquiry"; ?>"><i class="fa-solid fa-arrow-right"></i>詳細はお問い合わせください</a>
                     </li>
                     <li class="subsidy-item">
                         <p class="head-label desc-24-bold">ものづくり補助金</p>
@@ -128,7 +128,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                 グローバル市場開拓枠は3000万円まで補助されます。</p>
                             </div>
                         </div>
-                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "inquery"; ?>"><i class="fa-solid fa-arrow-right"></i>詳細はお問い合わせください</a>
+                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "inquiry"; ?>"><i class="fa-solid fa-arrow-right"></i>詳細はお問い合わせください</a>
                     </li>
                     <li class="subsidy-item">
                         <p class="head-label desc-24-bold">事業再構築補助金</p>
@@ -144,10 +144,10 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                                 <p class="content desc-16-bold">**********************************************************************************************************************************************</p>
                             </div>
                         </div>
-                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "inquery"; ?>"><i class="fa-solid fa-arrow-right"></i>詳細はお問い合わせください</a>
+                        <a class="goto-page desc-15-bold" href="<?php echo HOME . "inquiry"; ?>"><i class="fa-solid fa-arrow-right"></i>詳細はお問い合わせください</a>
                     </li>
                 </ul>
-                <a href="<?php echo HOME . 'inquery'; ?>" class="btn bottom">ご希望・相談入力フォーム</a>
+                <a href="<?php echo HOME . 'inquiry'; ?>" class="btn bottom">ご希望・相談入力フォーム</a>
             </div>
         </div>
     </main>

@@ -48,9 +48,9 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                             <img class="thumbnail" src="<?php echo catch_that_image(); ?>">
                         <?php endif; ?>
                             <div class="news-wrapper">
-                                <div class="date"><?php the_time('Y.m.f'); ?></div>
+                                <div class="date"><span><?php the_time('Y.m.d'); ?></span></div>
                                 <h3 class="title"><?php the_title(); ?></h3>
-                                <p class="content desc-15-normal"><?php the_excerpt(); ?></p>
+                                <p class="content"><?php the_excerpt(); ?></p>
                             </div>
                         </div>
                     </a>

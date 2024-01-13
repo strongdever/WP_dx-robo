@@ -177,8 +177,8 @@
                         <?php endwhile; ?>
 					</ul>
                 <?php endif; ?>
-					<a class="goto-page desc-15-bold" href="<?php echo HOME . "news"; ?>"><i class="fa-solid fa-arrow-right"></i>ニュース一覧</a>
 				</div>
+				<a class="goto-page desc-15-bold" href="<?php echo HOME . "news"; ?>">ニュース一覧<i class="fa-solid fa-arrow-right"></i></a>
 			</div>
 		</section>
 		<section class="introduction">
@@ -221,6 +221,7 @@
 					</div>
 				</li>
 			</ul>
+			<a href="<?php echo HOME . 'search'; ?>" class="btn"><i class="fas fa-search" style="color: #009770;"></i>全国のRPA導入士を見る</a>
 		</section>
 		<section class="case">
 			<div class="container">
@@ -248,7 +249,7 @@
 						</div>
 					</li>
 				</ul>
-				<a class="goto-page desc-15-bold" href="<?php echo HOME . "news"; ?>"><i class="fa-solid fa-arrow-right"></i>業務の自動化例</a>
+				<a class="goto-page desc-15-bold" href="<?php echo HOME . "case"; ?>"><i class="fa-solid fa-arrow-right"></i>業務の自動化例</a>
 			</div>
 		</section>
 		<section class="three-promise">

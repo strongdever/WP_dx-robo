@@ -74,7 +74,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                 </div>
             </div>
         </section>
-        <a class="btn bottom" href="<?php echo HOME . 'inquery'; ?>">ご希望・相談入力フォーム</a>
+        <a class="btn bottom" href="<?php echo HOME . 'inquiry'; ?>">ご希望・相談入力フォーム</a>
     </main>
 
 	<?php get_footer("consult"); ?>

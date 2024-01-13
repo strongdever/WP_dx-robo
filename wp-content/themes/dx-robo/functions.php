@@ -42,6 +42,8 @@ function stop_rich_editor($editor) {
 
 add_filter('user_can_richedit', 'stop_rich_editor');
 
+add_filter('show_admin_bar', '__return_false', 99); //remove the space by the admin bar
+
 // エディター独自スタイル追加
 //TinyMCE追加用のスタイルを初期化
 if(!function_exists('initialize_tinymce_styles')) {
@@ -100,7 +102,8 @@ function theme_add_files() {
     wp_enqueue_style('c-theme', T_DIRE_URI.'/style.css', [], '1.0', 'all');
 
     wp_enqueue_script('s-jquery', T_DIRE_URI.'/assets/js/jquery.min.js', [], '1.0', false);
-    wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/page-search.php', array( 'jquery' ), '1.0', true );
+    // wp_enqueue_script('s-cookie', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js', [], '1.0', false);
+    wp_enqueue_script( 'ajax-script', get_template_directory_uri() . '/archive-search.php', array( 'jquery' ), '1.0', true );
     wp_localize_script( 'ajax-script', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) ); 
 }
 
@@ -276,7 +279,7 @@ function handle_ajax_request() {
 
     $numbersPerPage = 5;
     $args = [
-        'post_type' => 'blog',
+        'post_type' => 'search',
         'post_status' => 'publish',
         'paged' => $paged,
         'posts_per_page' => $numbersPerPage,
@@ -390,7 +393,7 @@ add_action( 'wp_ajax_nopriv_my_ajax_action', 'handle_ajax_request' );
 //Update the meta keys of the title and the content of the blog.
 function update_blog_meta_keys() {
     $args = [
-        'post_type' => 'blog',
+        'post_type' => 'search',
         'post_status' => 'publish',
         'posts_per_page' => -1,
     ];
@@ -406,5 +409,16 @@ function update_blog_meta_keys() {
         endwhile;
     }
 }
+
+function custom_mwform_default_values($default, $field, $form_data) {
+    if ($field['name'] === 'name') {
+        $name_param = isset($_GET['name']) ? sanitize_text_field($_GET['name']) : '';
+        if (!empty($name_param)) {
+            $default = $name_param;
+        }
+    }
+    return $default;
+}
+add_filter('mwform_default_value', 'custom_mwform_default_values', 10, 3);
 
 ?>

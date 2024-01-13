@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php 
+/*
+Template Name: inquiry Confirm Template
+*/
+get_header(); 
+?>
 <?php
 
 $path_parts = $_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
@@ -9,7 +14,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
 ?>
 
-    <main id="inquery-page">
+    <main id="inquiry-confirm-page">
         <div class="bread-crump">
             <div class="container">
                 <a href="<?php echo HOME; ?>" class="link">トップページ</a>
@@ -24,11 +29,11 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
             </div>
         </div>
         <ul class="steps-wrapper">
-            <li class="step active">
+            <li class="step">
                 <span class="desc-24-bold">1</span>
                 <p class="desc-16-bold">内容入力</p>
             </li>
-            <li class="step">
+            <li class="step active">
                 <span class="desc-24-bold">2</span>
                 <p class="desc-16-bold">内容確認</p>
             </li>

@@ -322,14 +322,14 @@ update_blog_meta_keys();
                     <a class="btn"><i class="fas fa-search" style="color: #ffffff;"></i>この条件で検索する</a>
                 </div>
             </div>
-            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div class="spinner-wrapper"><div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
         </section>
         
         <div class="blog-wrapper">
             <?php
                 $numbersPerPage = 5;
                 $args = [
-                    'post_type' => 'blog',
+                    'post_type' => 'search',
                     'post_status' => 'publish',
                     'paged' => $paged,
                     'posts_per_page' => $numbersPerPage,
@@ -512,7 +512,7 @@ update_blog_meta_keys();
             });
 
             function async_Request(work_scope, province_name, paged) {  //ajax request function
-                $(".lds-spinner").show();
+                $(".spinner-wrapper").show();
                 console.log(work_scope);
                 var data = {
                     work_scope: work_scope,
@@ -531,7 +531,7 @@ update_blog_meta_keys();
                         blog_data = response.data['blog_data'];
                         $('.blog-wrapper').empty();
                         $('.blog-wrapper').append(blog_data);
-                        $(".lds-spinner").hide();
+                        $(".spinner-wrapper").hide();
                     },
                 });
             }

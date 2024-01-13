@@ -119,7 +119,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
                     </li>
                 </p>
             </div>
-            <a class="btn" href="<?php echo HOME . 'inquery'; ?>">ご希望・相談入力フォーム</a>
+            <a class="btn" href="<?php echo HOME . 'inquiry'; ?>">ご希望・相談入力フォーム</a>
         </div>
         
     </main>

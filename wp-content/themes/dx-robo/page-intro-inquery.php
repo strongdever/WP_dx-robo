@@ -1,6 +1,6 @@
 <?php 
 /*
-Template Name: Intro-inquery Template
+Template Name: Intro-inquiry Template
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -16,7 +16,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
 ?>
 
-    <main id="intro-inquery-page">
+    <main id="intro-inquiry-page">
         <div class="bread-crump">
             <div class="container">
                 <a href="<?php echo HOME; ?>" class="link">トップページ</a>

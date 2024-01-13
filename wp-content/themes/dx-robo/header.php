@@ -135,7 +135,7 @@ $path_parts = pathinfo($path_parts);
                         <option value="クラウド会計ソフトを選びます" <?php echo $work_scope == 'クラウド会計ソフトを選びます' ? 'selected' : ''; ?>>クラウド会計ソフトを選びます</option>
                     </select>
                     <div class="search-input-wrapper">
-                        <input class="search-input desc-15-bold" id="s-key" placeholder="フリーワードで検索" value="<?php echo $s_key; ?>">
+                        <input class="search-input desc-15-normal" id="s-key" placeholder="フリーワードで検索" value="<?php echo $s_key; ?>">
                         <button class="btn-search"><i class="fas fa-search" style="color: #ffffff;"></i></button>
                     </div>
                 </div>

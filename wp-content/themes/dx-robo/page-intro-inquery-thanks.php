@@ -1,6 +1,6 @@
 <?php 
 /*
-Template Name: Intro Inquery Thanks Template
+Template Name: Intro inquiry Thanks Template
 */
 get_header(); 
 ?>
@@ -14,7 +14,7 @@ $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 
 ?>
 
-    <main id="intro-inquery-thanks-page">
+    <main id="intro-inquiry-thanks-page">
         <div class="bread-crump">
             <div class="container">
                 <a href="<?php echo HOME; ?>" class="link">トップページ</a>
